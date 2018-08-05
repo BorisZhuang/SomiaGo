@@ -1,19 +1,53 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Button, Text, StyleSheet} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 
 class Welcome extends Component {
+  static get options() {
+    return {
+      topBar: {
+        visible: true,
+        leftButtons: [
+          {
+            id: 'leftbutton',
+            icon: require('../Images/one.png'),
+          }
+        ],
+      }
+    };
+  }
+
+  constructor(props) {
+    super(props);
+    Navigation.events().bindComponent(this);
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    this.showSideMenu('left');
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Hey, Welcome to the new world!</Text>
+        <Text style={styles.welcome}>{this.props.text}</Text>
       </View>
     );
+  }
+
+  showSideMenu(side) {
+    Navigation.mergeOptions('somiaGo.SideMenu.left', {
+      sideMenu: {
+        [side]: {
+          visible: true
+        }
+      }
+    });
   }
 }
 
 const styles = StyleSheet.create({
   welcome: {
-    fontSize: 28
+    fontSize: 33
   },
   container: {
     flex: 1,
