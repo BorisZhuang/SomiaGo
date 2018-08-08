@@ -8,7 +8,7 @@ Navigation.events().registerAppLaunchedListener(() => {
       sideMenu: {
         left: {
           component: {
-            id: 'somiaGo.SideMenu.left',
+            //id: 'somiaGo.SideMenu.left',
             name: 'navigation.somiaGo.SideMenu',
             passProps: {
               text: 'left side menu screen'
@@ -23,9 +23,9 @@ Navigation.events().registerAppLaunchedListener(() => {
                   children: [
                     {
                       component: {
-                        name: 'navigation.somiaGo.Welcome',
+                        name: 'navigation.somiaGo.Home',
                         passProps: {
-                          text: 'This is a side menu center screen tab 1'
+                          text: 'This is center screen tab 1'
                         },
                       }
                     }
@@ -49,9 +49,9 @@ Navigation.events().registerAppLaunchedListener(() => {
                   children: [
                     {
                       component: {
-                        name: 'navigation.somiaGo.Welcome',
+                        name: 'navigation.somiaGo.Home',
                         passProps: {
-                          text: 'This is a side menu center screen tab 2'
+                          text: 'This is center screen tab 2'
                         }
                       }
                     }

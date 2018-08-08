@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {View, Button, Text, StyleSheet} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 
-class Welcome extends Component {
+class ProductPub extends Component {
   static get options() {
     return {
       topBar: {
@@ -35,7 +35,7 @@ class Welcome extends Component {
   }
 
   showSideMenu(side) {
-    Navigation.mergeOptions('somiaGo.SideMenu.left', {
+    Navigation.mergeOptions(this.props.componentId, {
       sideMenu: {
         [side]: {
           visible: true
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Welcome;
+export default ProductPub;
