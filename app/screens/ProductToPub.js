@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Card, FlatList, View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import ActionButton from 'react-native-action-button';
 import {Navigation} from 'react-native-navigation';
 import { data } from "../data";
 import ProductItem from '../components/ProductItem';
@@ -78,6 +79,23 @@ class ProductToPub extends Component {
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
           style={styles.container} />
+        <ActionButton
+          buttonColor="rgba(231,76,60,1)"
+          onPress={() => Navigation.push(this.props.componentId, {
+            component: {
+              name: 'navigation.somiaGo.ProductNew',
+              passProps: {
+                text: 'This is New Product screen'
+              },
+/*               options: {
+                topBar: {
+                  title: {
+                    text: 'Product View'
+                  }
+                }
+              } */
+            }
+          })} />
       </View>
     );
   }
