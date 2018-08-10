@@ -1,6 +1,8 @@
 import registerScreens from './app/screens/index';
 import {Navigation} from 'react-native-navigation';
+import {data} from './app/data';
 
+data.populateData();
 registerScreens();
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
