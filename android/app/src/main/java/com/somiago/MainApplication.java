@@ -5,6 +5,8 @@ import com.facebook.react.ReactPackage;
 import com.reactnativenavigation.BuildConfig;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +30,8 @@ public class MainApplication extends NavigationApplication {
     @Override
     public List<ReactPackage> createAdditionalReactPackages() {
         return Arrays.<ReactPackage>asList(
-                // eg. new VectorIconsPackage()
+                new PickerPackage(),
+                new VectorIconsPackage()
         );
     }
 }
