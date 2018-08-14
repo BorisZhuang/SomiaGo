@@ -12,7 +12,8 @@ export default class ImageGridView extends Component {
     ImagePicker.openPicker({
       multiple: true
     }).then(images => {
-      this.setState({images})
+      this.setState({images});
+      this.props.onPickDone(images);
     });
   }
 
@@ -27,45 +28,39 @@ export default class ImageGridView extends Component {
 					underlayColor={'#fff'}
 					onPress={this.openImgPicker}
 				>
-					<Image source={require('../Images/add.png')} style={{ width: 120, height: 120 }} />
+					<Image source={require('../Images/add.png')} style={{ width: 100, height: 100 }} />
 				</TouchableHighlight>
 			);
 		}
 
 		return (
-			<View
-				style={{
-					flexDirection: 'row',
-					flexWrap: 'wrap'
-				}}
-			>
+			<View style={styles.container}>
 				{this.state.images
 					? this.state.images.map((image) => (
 							<View
 								//key={i.url}
 								style={{
-									width: 120,
-									height: 120,
-									marginTop: 5,
-									//marginLeft: (width - 4 * 70) / 5
+									width: 100,
+									height: 100,
+									margin: 5,
 								}}
 							>
 								<TouchableHighlight
 									activeOpacity={1}
-									//underlayColor={skin.tint}
 									onPress={() => console.log(image.path)}
 								>
-									<Image style={{ width: 120, height: 120 }} source={{ uri: image.path }} />
+									<Image style={{ width: 100, height: 100 }} source={{ uri: image.path }} />
 								</TouchableHighlight>
 							</View>
 						))
           : null}
         <View
           style={{
-            width: 70,
-            height: 70,
-            //marginLeft: (width - 4 * 70) / 5,
-            marginTop: 5 }}>
+            width: 100,
+            height: 100,
+            margin: 5
+            }}
+        >
 					{defaultImgView}
 				</View>
 			</View>
@@ -74,10 +69,8 @@ export default class ImageGridView extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View>
-          {this.createImageItem()}
-        </View>
+      <View>
+        {this.createImageItem()}
       </View>
     );
   }
@@ -85,8 +78,10 @@ export default class ImageGridView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    //flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   }
 })
