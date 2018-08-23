@@ -7,7 +7,7 @@ class ProductItem extends Component {
       <TouchableOpacity
         onPress={this.props.onPress}>
         <View>
-          <Image source={this.props.photo}/>
+          <Image source={{uri: this.props.photo}} style={{ width: 100, height: 100 }}/>
           <View>
             <Text>{this.props.text}</Text>
           </View>

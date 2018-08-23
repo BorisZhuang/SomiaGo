@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import {View, Button, Text, TextInput, StyleSheet, TouchableHighlight, ScrollView, Image, KeyboardAvoidingView} from 'react-native';
 import {Navigation} from 'react-native-navigation';
+import { connect } from "react-redux";
+import { Provider } from "react-redux";
+
 import ImageGridView from '../components/ImageGridView';
+import {addProduct} from '../actions/products';
+import store from "../config/store";
 
 class ProductNew extends Component {
   static get options() {
@@ -12,68 +17,90 @@ class ProductNew extends Component {
           text: 'New Product',
           fontSize: 14,
           fontFamily: 'Helvetica',
-        }
+        },
+        rightButtons: [
+          {
+            id: 'productAddBtn',
+            text: 'Add Product',
+            color: 'green',
+            icon: require('../Images/one.png'),
+          }
+        ]
       },
       bottomTabs: {
         visible: false,
         animate: false, // Controls whether BottomTabs visibility changes should be animated
-      },
+      }
     };
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      pickedImages: [],
+      id: '1',
+      images: [],
       price: 0,
       description: 'Please add description here.'
     };
+    Navigation.events().bindComponent(this);
   }
 
   onPickDone = (images) => {
     this.setState(state => {
-      state.pickedImages = images;
+      state.images = images;
       return state;
     });
-    console.log(this.state.pickedImages);
+    console.log(this.state.images);
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    this.props.dispatch(addProduct({
+      id: this.state.id + 1,
+      images: this.state.images,
+      price: this.state.price,
+      description: this.state.description
+    }));
+    Navigation.pop(this.props.componentId);
   }
 
   render() {
     return (
-      <View style={styles.container}>
-      <KeyboardAvoidingView behavior="padding">
-        <ImageGridView onPickDone={this.onPickDone}/>
-        <View style={styles.border} />
-        <TextInput
-          style={{height: 40, width: 120}}
-          underlineColorAndroid="transparent"
-          keyboardType="numeric"
-          value = {this.state.price.toString()}
-          onChangeText={
-            text => {
-              this.setState(state => {
-                state.price = text;
-                return state;
-              });
-              console.log(this.state.price);
-            }
-          }/>
-        <View style={styles.border} />
-        <TextInput
-          style={{height: 40, width: '90%'}}
-          underlineColorAndroid="transparent"
-          value = {this.state.description}
-          onChangeText={
-            text => {
-              this.setState(state => {
-                state.description = text;
-                return state;
-              });
-              console.log(this.state.description);
-            }
-          }/>
+      //<Provider store={store}>
+        <View style={styles.container}>
+          <KeyboardAvoidingView behavior="padding">
+            <ImageGridView onPickDone={this.onPickDone}/>
+            <View style={styles.border} />
+            <TextInput
+              style={{height: 40, width: 120}}
+              underlineColorAndroid="transparent"
+              keyboardType="numeric"
+              value = {this.state.price.toString()}
+              onChangeText={
+                text => {
+                  this.setState(state => {
+                    state.price = text;
+                    return state;
+                  });
+                  console.log(this.state.price);
+                }
+              }/>
+            <View style={styles.border} />
+            <TextInput
+              style={{height: 40, width: '90%'}}
+              underlineColorAndroid="transparent"
+              value = {this.state.description}
+              onChangeText={
+                text => {
+                  this.setState(state => {
+                    state.description = text;
+                    return state;
+                  });
+                  console.log(this.state.description);
+                }
+              }/>
           </KeyboardAvoidingView>
-      </View>
+        </View>
+      //</Provider>
     );
   }
 }
@@ -99,4 +126,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default ProductNew;
+export default connect()(ProductNew);

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Card, FlatList, View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import ActionButton from 'react-native-action-button';
 import {Navigation} from 'react-native-navigation';
+import { connect } from "react-redux";
+
 import { data } from "../data";
 import ProductItem from '../components/ProductItem';
 
@@ -27,7 +29,7 @@ class ProductToPub extends Component {
 
   constructor(props) {
     super(props);
-    this.data = data.getArticles('post');
+    //this.data = data.getArticles('post');
     Navigation.events().bindComponent(this);
   }
 
@@ -47,8 +49,8 @@ class ProductToPub extends Component {
 
   _renderItem = ({item}) => (
     <ProductItem
-      text={item.text}
-      photo={item.photo}
+      text={item.description}
+      photo={item.images[0].path}
       onPress={() => Navigation.push(this.props.componentId, {
         component: {
           name: 'navigation.somiaGo.ProductView',
@@ -75,7 +77,7 @@ class ProductToPub extends Component {
     return (
       <View>
         <FlatList
-          data={this.data}
+          data={this.props.data}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
           style={styles.container} />
@@ -87,13 +89,6 @@ class ProductToPub extends Component {
               passProps: {
                 text: 'This is New Product screen'
               },
-/*               options: {
-                topBar: {
-                  title: {
-                    text: 'Product View'
-                  }
-                }
-              } */
             }
           })} />
       </View>
@@ -112,4 +107,18 @@ const styles = StyleSheet.create({
   }
 })
 
-export default ProductToPub;
+const mapStateToProps = state => {
+  const productsById = state.products.byId;
+  const productIds = state.products.allIds;
+  const products = [];
+  if (productIds !== undefined && productIds.length !== 0){
+    productIds.forEach(id => {
+      products.push(productsById[id])
+    });
+  }
+  return {
+    data: products
+  }
+};
+
+export default connect(mapStateToProps)(ProductToPub);

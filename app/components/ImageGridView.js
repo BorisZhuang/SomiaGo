@@ -38,7 +38,7 @@ export default class ImageGridView extends Component {
 				{this.state.images
 					? this.state.images.map((image) => (
 							<View
-								//key={i.url}
+								key={image.path}
 								style={{
 									width: 100,
 									height: 100,
