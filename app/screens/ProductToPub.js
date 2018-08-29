@@ -111,13 +111,13 @@ const mapStateToProps = state => {
   const productsById = state.products.byId;
   const productIds = state.products.allIds;
   const products = [];
-  if (productIds !== undefined && productIds.length !== 0){
+  if (productIds !== undefined && productIds.length > 0) {
     productIds.forEach(id => {
       products.push(productsById[id])
     });
   }
   return {
-    data: products
+    data: products,
   }
 };
 

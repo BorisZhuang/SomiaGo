@@ -37,7 +37,6 @@ class ProductNew extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '1',
       images: [],
       price: 0,
       description: 'Please add description here.'
@@ -54,53 +53,54 @@ class ProductNew extends Component {
   }
 
   navigationButtonPressed({ buttonId }) {
-    this.props.dispatch(addProduct({
-      id: this.state.id + 1,
+    const id = Date.now() + Math.random().toString().slice(2);
+    const newProduct = {
+      productId: id,
       images: this.state.images,
       price: this.state.price,
       description: this.state.description
-    }));
+    };
+
+    this.props.dispatch(addProduct(newProduct));
     Navigation.pop(this.props.componentId);
   }
 
   render() {
     return (
-      //<Provider store={store}>
-        <View style={styles.container}>
-          <KeyboardAvoidingView behavior="padding">
-            <ImageGridView onPickDone={this.onPickDone}/>
-            <View style={styles.border} />
-            <TextInput
-              style={{height: 40, width: 120}}
-              underlineColorAndroid="transparent"
-              keyboardType="numeric"
-              value = {this.state.price.toString()}
-              onChangeText={
-                text => {
-                  this.setState(state => {
-                    state.price = text;
-                    return state;
-                  });
-                  console.log(this.state.price);
-                }
-              }/>
-            <View style={styles.border} />
-            <TextInput
-              style={{height: 40, width: '90%'}}
-              underlineColorAndroid="transparent"
-              value = {this.state.description}
-              onChangeText={
-                text => {
-                  this.setState(state => {
-                    state.description = text;
-                    return state;
-                  });
-                  console.log(this.state.description);
-                }
-              }/>
-          </KeyboardAvoidingView>
-        </View>
-      //</Provider>
+      <View style={styles.container}>
+        <KeyboardAvoidingView behavior="padding">
+          <ImageGridView onPickDone={this.onPickDone}/>
+          <View style={styles.border} />
+          <TextInput
+            style={{height: 40, width: 120}}
+            underlineColorAndroid="transparent"
+            keyboardType="numeric"
+            value = {this.state.price.toString()}
+            onChangeText={
+              text => {
+                this.setState(state => {
+                  state.price = text;
+                  return state;
+                });
+                console.log(this.state.price);
+              }
+            }/>
+          <View style={styles.border} />
+          <TextInput
+            style={{height: 40, width: '90%'}}
+            underlineColorAndroid="transparent"
+            value = {this.state.description}
+            onChangeText={
+              text => {
+                this.setState(state => {
+                  state.description = text;
+                  return state;
+                });
+                console.log(this.state.description);
+              }
+            }/>
+        </KeyboardAvoidingView>
+      </View>
     );
   }
 }

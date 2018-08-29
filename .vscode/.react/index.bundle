@@ -1724,7 +1724,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       }
     });
   });
-},0,[1,166,555,548,550],"index.js");
+},0,[1,166,554,547,549],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -1844,9 +1844,9 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       return _SideMenu.default;
     });
 
-    _reactNativeNavigation.Navigation.registerComponent('navigation.somiaGo.ProductToPub', function () {
+    _reactNativeNavigation.Navigation.registerComponentWithRedux('navigation.somiaGo.ProductToPub', function () {
       return _ProductToPub.default;
-    });
+    }, _reactRedux.Provider, _store.default);
 
     _reactNativeNavigation.Navigation.registerComponent('navigation.somiaGo.ProductPub', function () {
       return _ProductPub.default;
@@ -1878,7 +1878,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   ;
-},1,[2,12,166,526,547,549,551,601,602,603,604,609,610,611,612],"index.js");
+},1,[2,12,166,525,546,548,550,600,601,602,603,611,612,613,608],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -87876,7 +87876,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.createProvider = _Provider.createProvider;
   exports.connectAdvanced = _connectAdvanced2.default;
   exports.connect = _connect2.default;
-},526,[527,530,533],"index.js");
+},525,[526,529,532],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -87991,7 +87991,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   exports.default = createProvider();
-},527,[2,213,528,529],"Provider.js");
+},526,[2,213,527,528],"Provider.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -88020,7 +88020,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     dispatch: _propTypes2.default.func.isRequired,
     getState: _propTypes2.default.func.isRequired
   });
-},528,[213],"PropTypes.js");
+},527,[213],"PropTypes.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -88036,7 +88036,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       throw new Error(message);
     } catch (e) {}
   }
-},529,[],"warning.js");
+},528,[],"warning.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -88344,7 +88344,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       return (0, _hoistNonReactStatics2.default)(Connect, WrappedComponent);
     };
   }
-},530,[514,531,2,532,528],"connectAdvanced.js");
+},529,[514,530,2,531,527],"connectAdvanced.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -88375,7 +88375,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
 
   module.exports = invariant;
-},531,[],"browser.js");
+},530,[],"browser.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   "use strict";
 
@@ -88468,7 +88468,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }();
 
   exports.default = Subscription;
-},532,[],"Subscription.js");
+},531,[],"Subscription.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -88596,7 +88596,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   exports.default = createConnect();
-},533,[530,534,535,543,544,545],"connect.js");
+},532,[529,533,534,542,543,544],"connect.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -88631,7 +88631,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
     return true;
   }
-},534,[],"shallowEqual.js");
+},533,[],"shallowEqual.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -88663,7 +88663,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   exports.default = [whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject];
-},535,[536,539],"mapDispatchToProps.js");
+},534,[535,538],"mapDispatchToProps.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -89091,7 +89091,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.applyMiddleware = applyMiddleware;
   exports.compose = compose;
   exports.__DO_NOT_USE__ActionTypes = ActionTypes;
-},536,[537],"redux.js");
+},535,[536],"redux.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -89125,7 +89125,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var result = (0, _ponyfill2['default'])(root);
   exports['default'] = result;
-},537,[538],"index.js");
+},536,[537],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -89153,7 +89153,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   ;
-},538,[],"ponyfill.js");
+},537,[],"ponyfill.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -89217,7 +89217,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       return proxy;
     };
   }
-},539,[540],"wrapMapToProps.js");
+},538,[539],"wrapMapToProps.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -89243,7 +89243,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       (0, _warning2.default)(methodName + '() in ' + displayName + ' must return a plain object. Instead received ' + value + '.');
     }
   }
-},540,[541,529],"verifyPlainObject.js");
+},539,[540,528],"verifyPlainObject.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var baseGetTag = _$$_REQUIRE(_dependencyMap[0], './_baseGetTag'),
       getPrototype = _$$_REQUIRE(_dependencyMap[1], './_getPrototype'),
@@ -89272,13 +89272,13 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   module.exports = isPlainObject;
-},541,[39,542,90],"isPlainObject.js");
+},540,[39,541,90],"isPlainObject.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var overArg = _$$_REQUIRE(_dependencyMap[0], './_overArg');
 
   var getPrototype = overArg(Object.getPrototypeOf, Object);
   module.exports = getPrototype;
-},542,[102],"_getPrototype.js");
+},541,[102],"_getPrototype.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -89299,7 +89299,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   exports.default = [whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing];
-},543,[539],"mapStateToProps.js");
+},542,[538],"mapStateToProps.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -89372,7 +89372,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   exports.default = [whenMergePropsIsFunction, whenMergePropsIsOmitted];
-},544,[540],"mergeProps.js");
+},543,[539],"mergeProps.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -89485,7 +89485,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     var selectorFactory = options.pure ? pureFinalPropsSelectorFactory : impureFinalPropsSelectorFactory;
     return selectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, options);
   }
-},545,[546],"selectorFactory.js");
+},544,[545],"selectorFactory.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -89517,7 +89517,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     verify(mapDispatchToProps, 'mapDispatchToProps', displayName);
     verify(mergeProps, 'mergeProps', displayName);
   }
-},546,[529],"verifySubselectors.js");
+},545,[528],"verifySubselectors.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -89657,7 +89657,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = Home;
   exports.default = _default2;
-},547,[2,12,169,166,548],"Home.js");
+},546,[2,12,169,166,547],"Home.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -89669,7 +89669,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "one",
     "type": "png"
   });
-},548,[237],"one.png");
+},547,[237],"one.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -89994,7 +89994,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = SideMenu;
   exports.default = _default2;
-},549,[2,12,169,166,548,550],"SideMenu.js");
+},548,[2,12,169,166,547,549],"SideMenu.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -90006,7 +90006,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "two",
     "type": "png"
   });
-},550,[237],"two.png");
+},549,[237],"two.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -90023,9 +90023,11 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _reactNativeNavigation = _$$_REQUIRE(_dependencyMap[4], "react-native-navigation");
 
-  var _data = _$$_REQUIRE(_dependencyMap[5], "../data");
+  var _reactRedux = _$$_REQUIRE(_dependencyMap[5], "react-redux");
 
-  var _ProductItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "../components/ProductItem"));
+  var _data = _$$_REQUIRE(_dependencyMap[6], "../data");
+
+  var _ProductItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "../components/ProductItem"));
 
   var _jsxFileName = "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/screens/ProductToPub.js";
 
@@ -90079,7 +90081,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
             visible: true,
             leftButtons: [{
               id: 'leftbutton',
-              icon: _$$_REQUIRE(_dependencyMap[7], '../Images/one.png')
+              icon: _$$_REQUIRE(_dependencyMap[8], '../Images/one.png')
             }],
             title: {
               text: 'Product',
@@ -90101,8 +90103,8 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       _this._renderItem = function (_ref) {
         var item = _ref.item;
         return _react.default.createElement(_ProductItem.default, {
-          text: item.text,
-          photo: item.photo,
+          text: item.description,
+          photo: item.images[0].path,
           onPress: function onPress() {
             return _reactNativeNavigation.Navigation.push(_this.props.componentId, {
               component: {
@@ -90122,12 +90124,10 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 49
+            lineNumber: 51
           }
         });
       };
-
-      _this.data = _data.data.getArticles('post');
 
       _reactNativeNavigation.Navigation.events().bindComponent(_assertThisInitialized(_assertThisInitialized(_this)));
 
@@ -90162,16 +90162,16 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
         return _react.default.createElement(_reactNative.View, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 76
+            lineNumber: 78
           }
         }, _react.default.createElement(_reactNative.FlatList, {
-          data: this.data,
+          data: this.props.data,
           renderItem: this._renderItem,
           keyExtractor: this._keyExtractor,
           style: styles.container,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 77
+            lineNumber: 79
           }
         }), _react.default.createElement(_reactNativeActionButton.default, {
           buttonColor: "rgba(231,76,60,1)",
@@ -90187,7 +90187,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 82
+            lineNumber: 84
           }
         }));
       }
@@ -90211,9 +90211,26 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     }
   });
 
-  var _default2 = ProductToPub;
+  var mapStateToProps = function mapStateToProps(state) {
+    var productsById = state.products.byId;
+    var productIds = state.products.allIds;
+    var products = [];
+
+    if (productIds !== undefined && productIds.length > 0) {
+      productIds.forEach(function (id) {
+        products.push(productsById[id]);
+      });
+    }
+
+    return {
+      data: products
+    };
+  };
+
+  var _default2 = (0, _reactRedux.connect)(mapStateToProps)(ProductToPub);
+
   exports.default = _default2;
-},551,[2,12,169,552,166,555,600,548],"ProductToPub.js");
+},550,[2,12,169,551,166,525,554,599,547],"ProductToPub.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -90687,7 +90704,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       backgroundColor: "transparent"
     }
   });
-},552,[2,12,213,169,553,554],"ActionButton.js");
+},551,[2,12,213,169,552,553],"ActionButton.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -90931,7 +90948,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       color: "#444"
     }
   });
-},553,[2,12,213,169,554],"ActionButtonItem.js");
+},552,[2,12,213,169,553],"ActionButtonItem.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -90983,7 +91000,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
     return undefined;
   }
-},554,[169],"shared.js");
+},553,[169],"shared.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -91086,7 +91103,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var data = new DataProvider();
   exports.data = data;
-},555,[556,557,581,597,598,599,509],"index.js");
+},554,[555,556,580,596,597,598,509],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -91217,7 +91234,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = populate;
   exports.default = _default;
-},556,[557,581,597,598,509],"dataGenerator.js");
+},555,[556,580,596,597,509],"dataGenerator.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -91392,7 +91409,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }];
   var _default = users;
   exports.default = _default;
-},557,[558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580],"users.js");
+},556,[557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579],"users.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91404,7 +91421,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image10",
     "type": "png"
   });
-},558,[237],"Image10.png");
+},557,[237],"Image10.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91416,7 +91433,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image11",
     "type": "png"
   });
-},559,[237],"Image11.png");
+},558,[237],"Image11.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91428,7 +91445,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image2",
     "type": "png"
   });
-},560,[237],"Image2.png");
+},559,[237],"Image2.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91440,7 +91457,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image3",
     "type": "png"
   });
-},561,[237],"Image3.png");
+},560,[237],"Image3.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91452,7 +91469,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image4",
     "type": "png"
   });
-},562,[237],"Image4.png");
+},561,[237],"Image4.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91464,7 +91481,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image1",
     "type": "png"
   });
-},563,[237],"Image1.png");
+},562,[237],"Image1.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91476,7 +91493,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image12",
     "type": "png"
   });
-},564,[237],"Image12.png");
+},563,[237],"Image12.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91488,7 +91505,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image8",
     "type": "png"
   });
-},565,[237],"Image8.png");
+},564,[237],"Image8.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91500,7 +91517,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image6",
     "type": "png"
   });
-},566,[237],"Image6.png");
+},565,[237],"Image6.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91512,7 +91529,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image9",
     "type": "png"
   });
-},567,[237],"Image9.png");
+},566,[237],"Image9.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91524,7 +91541,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image5",
     "type": "png"
   });
-},568,[237],"Image5.png");
+},567,[237],"Image5.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91536,7 +91553,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image7",
     "type": "png"
   });
-},569,[237],"Image7.png");
+},568,[237],"Image7.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91548,7 +91565,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image9",
     "type": "png"
   });
-},570,[237],"Image9.png");
+},569,[237],"Image9.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91560,7 +91577,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image1",
     "type": "png"
   });
-},571,[237],"Image1.png");
+},570,[237],"Image1.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91572,7 +91589,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image3",
     "type": "png"
   });
-},572,[237],"Image3.png");
+},571,[237],"Image3.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91584,7 +91601,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image4",
     "type": "png"
   });
-},573,[237],"Image4.png");
+},572,[237],"Image4.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91596,7 +91613,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image5",
     "type": "png"
   });
-},574,[237],"Image5.png");
+},573,[237],"Image5.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91608,7 +91625,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image6",
     "type": "png"
   });
-},575,[237],"Image6.png");
+},574,[237],"Image6.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91620,7 +91637,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image7",
     "type": "png"
   });
-},576,[237],"Image7.png");
+},575,[237],"Image7.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91632,7 +91649,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image8",
     "type": "png"
   });
-},577,[237],"Image8.png");
+},576,[237],"Image8.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91644,7 +91661,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image10",
     "type": "png"
   });
-},578,[237],"Image10.png");
+},577,[237],"Image10.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91656,7 +91673,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image11",
     "type": "png"
   });
-},579,[237],"Image11.png");
+},578,[237],"Image11.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91668,7 +91685,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image12",
     "type": "png"
   });
-},580,[237],"Image12.png");
+},579,[237],"Image12.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -91829,7 +91846,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }];
   var _default = articles;
   exports.default = _default;
-},581,[582,583,584,585,586,587,588,589,590,591,592,593,594,595,596],"articles.js");
+},580,[581,582,583,584,585,586,587,588,589,590,591,592,593,594,595],"articles.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91841,7 +91858,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo1",
     "type": "png"
   });
-},582,[237],"photo1.png");
+},581,[237],"photo1.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91853,7 +91870,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo2",
     "type": "png"
   });
-},583,[237],"photo2.png");
+},582,[237],"photo2.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91865,7 +91882,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo3",
     "type": "png"
   });
-},584,[237],"photo3.png");
+},583,[237],"photo3.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91877,7 +91894,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo4",
     "type": "png"
   });
-},585,[237],"photo4.png");
+},584,[237],"photo4.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91889,7 +91906,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo5",
     "type": "png"
   });
-},586,[237],"photo5.png");
+},585,[237],"photo5.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91901,7 +91918,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo6",
     "type": "png"
   });
-},587,[237],"photo6.png");
+},586,[237],"photo6.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91913,7 +91930,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo45",
     "type": "png"
   });
-},588,[237],"photo45.png");
+},587,[237],"photo45.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91925,7 +91942,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo46",
     "type": "png"
   });
-},589,[237],"photo46.png");
+},588,[237],"photo46.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91937,7 +91954,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo47",
     "type": "png"
   });
-},590,[237],"photo47.png");
+},589,[237],"photo47.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91949,7 +91966,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo48",
     "type": "png"
   });
-},591,[237],"photo48.png");
+},590,[237],"photo48.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91961,7 +91978,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo49",
     "type": "png"
   });
-},592,[237],"photo49.png");
+},591,[237],"photo49.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91973,7 +91990,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo17",
     "type": "png"
   });
-},593,[237],"photo17.png");
+},592,[237],"photo17.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91985,7 +92002,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo18",
     "type": "png"
   });
-},594,[237],"photo18.png");
+},593,[237],"photo18.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -91997,7 +92014,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo19",
     "type": "png"
   });
-},595,[237],"photo19.png");
+},594,[237],"photo19.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -92009,7 +92026,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo20",
     "type": "png"
   });
-},596,[237],"photo20.png");
+},595,[237],"photo20.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -92072,7 +92089,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }];
   var _default = notifications;
   exports.default = _default;
-},597,[565],"notifications.js");
+},596,[564],"notifications.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -92148,7 +92165,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.Conversations = Conversations;
   var _default = Conversations;
   exports.default = _default;
-},598,[],"conversations.js");
+},597,[],"conversations.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -92193,7 +92210,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }];
   var _default = cards;
   exports.default = _default;
-},599,[],"cards.js");
+},598,[],"cards.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -92269,7 +92286,13 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
             lineNumber: 9
           }
         }, _react.default.createElement(_reactNative.Image, {
-          source: this.props.photo,
+          source: {
+            uri: this.props.photo
+          },
+          style: {
+            width: 100,
+            height: 100
+          },
           __source: {
             fileName: _jsxFileName,
             lineNumber: 10
@@ -92296,7 +92319,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   ProductItem = _wrapComponent("ProductItem")(ProductItem);
   var _default2 = ProductItem;
   exports.default = _default2;
-},600,[2,12,169],"ProductItem.js");
+},599,[2,12,169],"ProductItem.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -92436,7 +92459,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = ProductPub;
   exports.default = _default2;
-},601,[2,12,169,166,548],"ProductPub.js");
+},600,[2,12,169,166,547],"ProductPub.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -92576,7 +92599,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = ProductFavo;
   exports.default = _default2;
-},602,[2,12,169,166,548],"ProductFavo.js");
+},601,[2,12,169,166,547],"ProductFavo.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -92704,7 +92727,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = ProductView;
   exports.default = _default2;
-},603,[2,12,169,555],"ProductView.js");
+},602,[2,12,169,554],"ProductView.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -92826,11 +92849,14 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       key: "navigationButtonPressed",
       value: function navigationButtonPressed(_ref) {
         var buttonId = _ref.buttonId;
-        this.props.dispatch((0, _products.addProduct)({
+        var id = Date.now() + Math.random().toString().slice(2);
+        var newProduct = {
+          productId: id,
           images: this.state.images,
           price: this.state.price,
           description: this.state.description
-        }));
+        };
+        this.props.dispatch((0, _products.addProduct)(newProduct));
 
         _reactNativeNavigation.Navigation.pop(this.props.componentId);
       }
@@ -92843,25 +92869,25 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           style: styles.container,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 67
+            lineNumber: 70
           }
         }, _react.default.createElement(_reactNative.KeyboardAvoidingView, {
           behavior: "padding",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 68
+            lineNumber: 71
           }
         }, _react.default.createElement(_ImageGridView.default, {
           onPickDone: this.onPickDone,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 69
+            lineNumber: 72
           }
         }), _react.default.createElement(_reactNative.View, {
           style: styles.border,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 70
+            lineNumber: 73
           }
         }), _react.default.createElement(_reactNative.TextInput, {
           style: {
@@ -92881,13 +92907,13 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 71
+            lineNumber: 74
           }
         }), _react.default.createElement(_reactNative.View, {
           style: styles.border,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 85
+            lineNumber: 88
           }
         }), _react.default.createElement(_reactNative.TextInput, {
           style: {
@@ -92906,7 +92932,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 86
+            lineNumber: 89
           }
         })));
       }
@@ -92943,7 +92969,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var _default2 = (0, _reactRedux.connect)()(ProductNew);
 
   exports.default = _default2;
-},604,[2,12,169,166,526,605,608,612,548],"ProductNew.js");
+},603,[2,12,169,166,525,604,607,608,547],"ProductNew.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -93062,6 +93088,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           }
         }, this.state.images ? this.state.images.map(function (image) {
           return _react.default.createElement(_reactNative.View, {
+            key: image.path,
             style: {
               width: 100,
               height: 100,
@@ -93133,7 +93160,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       flexWrap: 'wrap'
     }
   });
-},605,[2,12,169,606,607],"ImageGridView.js");
+},604,[2,12,169,605,606],"ImageGridView.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -93148,7 +93175,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = _reactNative.NativeModules.ImageCropPicker;
   exports.default = _default;
-},606,[2,169],"index.js");
+},605,[2,169],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -93160,7 +93187,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "add",
     "type": "png"
   });
-},607,[237],"add.png");
+},606,[237],"add.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -93172,13 +93199,105 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var addProduct = function addProduct(product) {
     return {
       type: ADD_PRODUCT,
-      id: 1,
       product: product
     };
   };
 
   exports.addProduct = addProduct;
-},608,[],"products.js");
+},607,[],"products.js");
+__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _redux = _$$_REQUIRE(_dependencyMap[0], "redux");
+
+  var _reducers = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "../reducers"));
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  var _default = (0, _redux.createStore)(_reducers.default);
+
+  exports.default = _default;
+},608,[535,609],"store.js");
+__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _redux = _$$_REQUIRE(_dependencyMap[0], "redux");
+
+  var _products = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./products"));
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  var _default = (0, _redux.combineReducers)({
+    products: _products.default
+  });
+
+  exports.default = _default;
+},609,[535,610],"index.js");
+__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _redux = _$$_REQUIRE(_dependencyMap[0], "redux");
+
+  var _products = _$$_REQUIRE(_dependencyMap[1], "../actions/products");
+
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  function addProduct(state, action) {
+    var product = action.product;
+    var productId = product.productId;
+    return _objectSpread({}, state, _defineProperty({}, productId, product));
+  }
+
+  function addProductId(state, action) {
+    var product = action.product;
+    var productId = product.productId;
+    return state.concat(productId);
+  }
+
+  var productsById = function productsById() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var action = arguments.length > 1 ? arguments[1] : undefined;
+
+    switch (action.type) {
+      case _products.ADD_PRODUCT:
+        return addProduct(state, action);
+
+      default:
+        return state;
+    }
+  };
+
+  var allProducts = function allProducts() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var action = arguments.length > 1 ? arguments[1] : undefined;
+
+    switch (action.type) {
+      case _products.ADD_PRODUCT:
+        return addProductId(state, action);
+
+      default:
+        return state;
+    }
+  };
+
+  var _default = productsReducer = (0, _redux.combineReducers)({
+    byId: productsById,
+    allIds: allProducts
+  });
+
+  exports.default = _default;
+},610,[535,607],"products.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -93318,7 +93437,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = OrderNew;
   exports.default = _default2;
-},609,[2,12,169,166,548],"OrderNew.js");
+},611,[2,12,169,166,547],"OrderNew.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -93458,7 +93577,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = OrderUnpaid;
   exports.default = _default2;
-},610,[2,12,169,166,548],"OrderUnpaid.js");
+},612,[2,12,169,166,547],"OrderUnpaid.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -93598,87 +93717,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = OrderPaid;
   exports.default = _default2;
-},611,[2,12,169,166,548],"OrderPaid.js");
-__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.default = void 0;
-
-  var _redux = _$$_REQUIRE(_dependencyMap[0], "redux");
-
-  var _reducers = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "../reducers"));
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-  var _default = (0, _redux.createStore)(_reducers.default);
-
-  exports.default = _default;
-},612,[536,613],"store.js");
-__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.default = void 0;
-
-  var _redux = _$$_REQUIRE(_dependencyMap[0], "redux");
-
-  var _products = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./products"));
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-  var _default = (0, _redux.combineReducers)({
-    products: _products.default
-  });
-
-  exports.default = _default;
-},613,[536,614],"index.js");
-__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.default = void 0;
-
-  var _products = _$$_REQUIRE(_dependencyMap[0], "../actions/products");
-
-  function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-  function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-  function _iterableToArray(iter) { if ((typeof Symbol === "function" ? Symbol.iterator : "@@iterator") in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-  function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var initialState = {
-    products: {
-      byId: {},
-      allIds: []
-    }
-  };
-
-  var reducer = function reducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-    var action = arguments.length > 1 ? arguments[1] : undefined;
-
-    switch (action.type) {
-      case _products.ADD_PRODUCT:
-        return {
-          byId: _objectSpread({}, state.byId, _defineProperty({}, action.id, action.product)),
-          allIds: _toConsumableArray(state.allIds).concat([action.id])
-        };
-
-      default:
-        return state;
-    }
-  };
-
-  var _default = reducer;
-  exports.default = _default;
-},614,[608],"products.js");
+},613,[2,12,169,166,547],"OrderPaid.js");
 require(264);
 require(0);
 //# sourceMappingURL=index.map

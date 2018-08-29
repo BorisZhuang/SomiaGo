@@ -1,26 +1,42 @@
+import {combineReducers} from 'redux';
 import {ADD_PRODUCT} from '../actions/products';
 
-const initialState = {
-  products: {
-    byId: {},
-    allIds: []
-  }
-};
+function addProduct(state, action) {
+  const {product} = action;
+  const {productId} = product;
 
-const reducer = (state = initialState, action) => {
+  return {
+    ...state,
+    [productId]: product
+  };
+}
+
+function addProductId(state, action) {
+  const {product} = action;
+  const {productId} = product;
+
+  return state.concat(productId);
+}
+
+const productsById = (state = {}, action) => {
   switch(action.type) {
     case ADD_PRODUCT:
-      return {
-        byId: {
-          ...state.byId,
-          [action.id]: action.product
-        },
-        allIds: [...state.products.allIds, action.id]
-        //allIds: state.products.allIds.concat(action.id)
-      };
+      return addProduct(state, action);
     default:
       return state;
   }
 };
 
-export default reducer;
+const allProducts = (state = [], action) => {
+  switch(action.type) {
+    case ADD_PRODUCT:
+      return addProductId(state, action);
+    default:
+      return state;
+  }
+};
+
+export default productsReducer = combineReducers({
+  byId : productsById,
+  allIds : allProducts
+});
