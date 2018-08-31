@@ -6,28 +6,34 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
+import { connect } from "react-redux";
+
 import {data} from '../data';
 
 class ProductView extends React.Component {
-  static navigationOptions = {
-    title: 'Article View'.toUpperCase()
-  };
+  static get options() {
+    return {
+      topBar: {
+        visible: true,
+        title: {
+          text: 'Product View',
+          fontSize: 14,
+          fontFamily: 'Helvetica',
+        },
+      }
+    };
+  }
 
   constructor(props) {
     super(props);
-    this.data = data.getArticle(this.props.id);
+    //this.data = data.getArticle(this.props.id);
   }
 
   render() {
     return (
       <ScrollView style={styles.root}>
-        <Image source={this.data.photo}/>
-        <View>
-          <Text style={styles.title}>{this.data.header}</Text>
-        </View>
-        <View>
-          <Text>{this.data.text}</Text>
-        </View>
+        <Image source={{uri: this.props.data.images[0].path}} style={{ width: 100, height: 100 }}/>
+        <Text>{this.props.data.description}</Text>
       </ScrollView>
     )
   }
@@ -42,4 +48,15 @@ let styles = StyleSheet.create(theme => ({
   },
 }));
 
-export default ProductView;
+const mapStateToProps = (state, ownProps) => {
+  const productsById = state.products.byId;
+  const productIds = state.products.allIds;
+  let product;
+  if (productIds.indexOf(ownProps.id) > -1)
+      product = productsById[ownProps.id];
+  return {
+    data: product,
+  }
+};
+
+export default connect(mapStateToProps)(ProductView);

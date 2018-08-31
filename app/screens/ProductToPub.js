@@ -55,7 +55,7 @@ class ProductToPub extends Component {
         component: {
           name: 'navigation.somiaGo.ProductView',
           passProps: {
-            id: item.id
+            id: item.productId
           },
           options: {
             topBar: {
@@ -70,7 +70,7 @@ class ProductToPub extends Component {
   );
 
   _keyExtractor(post, index) {
-    return post.id;
+    return post.productId;
   }
 
   render() {
