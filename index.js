@@ -1,91 +1,13 @@
 import registerScreens from './app/screens/index';
 import {Navigation} from 'react-native-navigation';
 import {data} from './app/data';
+import {iconsMap, iconsLoaded} from './app/assets/icons';
+import {setRootToProduct} from './app/screens/SideMenu';
 
 data.populateData();
 registerScreens();
-Navigation.events().registerAppLaunchedListener(() => {
-  Navigation.setRoot({
-    root: {
-      sideMenu: {
-        left: {
-          component: {
-            //id: 'somiaGo.SideMenu.left',
-            name: 'navigation.somiaGo.SideMenu',
-            passProps: {
-              text: 'left side menu screen'
-            }
-          }
-        },
-        center: {
-          bottomTabs: {
-            children: [
-              {
-                stack: {
-                  children: [
-                    {
-                      component: {
-                        name: 'navigation.somiaGo.Home',
-                        passProps: {
-                          text: 'This is center screen tab 1'
-                        },
-                      }
-                    }
-                  ],
-                  options: {
-                    bottomTab: {
-                      fontFamily: 'HelveticaNeue-Italic',
-                      fontSize: 13,
-                      textColor: 'blue',
-                      iconColor: 'blue',
-                      selectedTextColor: 'red',
-                      selectedIconColor: 'red',
-                      text: 'Tab 1',
-                      icon: require('./app/Images/one.png'),
-                    }
-                  }
-                }
-              },
-              {
-                stack: {
-                  children: [
-                    {
-                      component: {
-                        name: 'navigation.somiaGo.Home',
-                        passProps: {
-                          text: 'This is center screen tab 2'
-                        }
-                      }
-                    }
-                  ],
-                  options: {
-                    bottomTab: {
-                      fontFamily: 'HelveticaNeue-Italic',
-                      fontSize: 13,
-                      text: 'Tab 2',
-                      icon: require('./app/Images/two.png'),
-                    }
-                  }
-                }
-              },
-            ],
-            options: {
-              topBar: {
-                visible: false
-              },
-              bottomTabs: {
-                visible: true,
-                animate: true, // Controls whether BottomTabs visibility changes should be animated
-                currentTabIndex: 0,
-                drawBehind: false,
-                backgroundColor: 'white'
-              }
-            }
-          }
-        },
-      }
-    }
-  });
+
+iconsLoaded.then(() => {
   Navigation.setDefaultOptions({
     layout: {
       backgroundColor: 'white',
@@ -94,5 +16,9 @@ Navigation.events().registerAppLaunchedListener(() => {
     overlay: {
       interceptTouchOutside: true
     },
+    topBar: {
+      visible: false,
+    },
   });
+  Navigation.events().registerAppLaunchedListener(setRootToProduct);
 });

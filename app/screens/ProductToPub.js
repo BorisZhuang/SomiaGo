@@ -6,27 +6,9 @@ import { connect } from "react-redux";
 
 import { data } from "../data";
 import ProductItem from '../components/ProductItem';
+import ProductBase from './ProductBase';
 
-class ProductToPub extends Component {
-  static get options() {
-    return {
-      topBar: {
-        visible: true,
-        leftButtons: [
-          {
-            id: 'leftbutton',
-            icon: require('../Images/one.png'),
-          }
-        ],
-        title: {
-          text: 'Product',
-          fontSize: 14,
-          fontFamily: 'Helvetica',
-        },
-      }
-    };
-  }
-
+class ProductToPub extends ProductBase {
   constructor(props) {
     super(props);
     //this.data = data.getArticles('post');
@@ -75,20 +57,18 @@ class ProductToPub extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <FlatList
           data={this.props.data}
           renderItem={this._renderItem}
-          keyExtractor={this._keyExtractor}
-          style={styles.container} />
+          keyExtractor={this._keyExtractor}/>
         <ActionButton
+          offsetX={20}
+          offsetY={65}
           buttonColor="rgba(231,76,60,1)"
           onPress={() => Navigation.push(this.props.componentId, {
             component: {
               name: 'navigation.somiaGo.ProductNew',
-              passProps: {
-                text: 'This is New Product screen'
-              },
             }
           })} />
       </View>
@@ -97,13 +77,14 @@ class ProductToPub extends Component {
 }
 
 const styles = StyleSheet.create({
-  welcome: {
-    fontSize: 33
-  },
   container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    //paddingTop: ( Platform.OS === 'ios' ) ? 20 : 0,
     backgroundColor: "white",
     paddingVertical: 8,
-    paddingHorizontal: 14
+    paddingHorizontal: 8
   }
 })
 

@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
 import {View, Button, Text, StyleSheet} from 'react-native';
 import {Navigation} from 'react-native-navigation';
+import ProductBase from './ProductBase';
 
-class ProductFavo extends Component {
-  static get options() {
-    return {
-      topBar: {
-        visible: true,
-        leftButtons: [
-          {
-            id: 'leftbutton',
-            icon: require('../Images/one.png'),
-          }
-        ],
-      }
-    };
-  }
-
+class ProductFavo extends ProductBase {
   constructor(props) {
     super(props);
     Navigation.events().bindComponent(this);

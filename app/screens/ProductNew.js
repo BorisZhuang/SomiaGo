@@ -7,23 +7,28 @@ import { Provider } from "react-redux";
 import ImageGridView from '../components/ImageGridView';
 import {addProduct} from '../actions/products';
 import store from "../config/store";
+import { iconsMap } from '../assets/icons';
 
 class ProductNew extends Component {
   static get options() {
     return {
       topBar: {
         visible: true,
+        backButton: { // android
+          color: "rgba(0, 0, 0, 0.87)"
+        },
+        buttonColor: "rgba(0, 0, 0, 0.87)", // iOS
         title: {
           text: 'New Product',
-          fontSize: 14,
+          fontSize: 18,
           fontFamily: 'Helvetica',
         },
         rightButtons: [
           {
-            id: 'productAddBtn',
-            text: 'Add Product',
+            id: 'productAddConfirmBtn',
+            //text: 'Add Product',
             color: 'green',
-            icon: require('../Images/one.png'),
+            icon: iconsMap['md-checkmark'],
           }
         ]
       },
@@ -49,7 +54,6 @@ class ProductNew extends Component {
       state.images = images;
       return state;
     });
-    console.log(this.state.images);
   }
 
   navigationButtonPressed({ buttonId }) {
@@ -75,7 +79,7 @@ class ProductNew extends Component {
             style={{height: 40, width: 120}}
             underlineColorAndroid="transparent"
             keyboardType="numeric"
-            value = {this.state.price.toString()}
+            value={this.state.price.toString()}
             onChangeText={
               text => {
                 this.setState(state => {
@@ -89,7 +93,8 @@ class ProductNew extends Component {
           <TextInput
             style={{height: 40, width: '90%'}}
             underlineColorAndroid="transparent"
-            value = {this.state.description}
+            placeholder= {this.state.description}
+            value = ""
             onChangeText={
               text => {
                 this.setState(state => {
@@ -106,13 +111,13 @@ class ProductNew extends Component {
 }
 
 const styles = StyleSheet.create({
-  welcome: {
-    fontSize: 33
-  },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    paddingVertical: 10,
+    paddingHorizontal: 10
   },
   imagesContainer: {
     flexDirection: 'row',
