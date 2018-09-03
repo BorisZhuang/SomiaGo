@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Provider } from "react-redux";
 
 import ImageGridView from '../components/ImageGridView';
+import InputWithButton from '../components/TextInput';
 import {addProduct} from '../actions/products';
 import store from "../config/store";
 import { iconsMap } from '../assets/icons';
@@ -74,11 +75,7 @@ class ProductNew extends Component {
       <View style={styles.container}>
         <KeyboardAvoidingView behavior="padding">
           <ImageGridView onPickDone={this.onPickDone}/>
-          <View style={styles.border} />
-          <TextInput
-            style={{height: 40, width: 120}}
-            underlineColorAndroid="transparent"
-            keyboardType="numeric"
+          <InputWithButton
             value={this.state.price.toString()}
             onChangeText={
               text => {
@@ -88,10 +85,10 @@ class ProductNew extends Component {
                 });
                 console.log(this.state.price);
               }
-            }/>
-          <View style={styles.border} />
+            }
+            onPress={() => console.log("pressed.")} />
           <TextInput
-            style={{height: 40, width: '90%'}}
+            style={styles.descriptionInput}
             underlineColorAndroid="transparent"
             placeholder= {this.state.description}
             value = ""
@@ -119,16 +116,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 10
   },
-  imagesContainer: {
-    flexDirection: 'row',
-    marginTop: 10,
-    flex: 3
-  },
-  border: {
-    width: '90%',
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: "#E2E2E2",
-  },
+  descriptionInput: {
+    fontSize: 20,
+  }
 })
 
 export default connect()(ProductNew);
