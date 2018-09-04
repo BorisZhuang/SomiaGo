@@ -29,7 +29,7 @@ class ProductToPub extends ProductBase {
     });
   }
 
-  _renderItem = ({item}) => (
+  renderItem = ({item}) => (
     <ProductItem
       text={item.description}
       photo={item.images[0].path}
@@ -51,8 +51,16 @@ class ProductToPub extends ProductBase {
     />
   );
 
-  _keyExtractor(post, index) {
+  keyExtractor(post, index) {
     return post.productId;
+  }
+
+  launchProductNewScreen = () => {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'navigation.somiaGo.ProductNew',
+      }
+    })
   }
 
   render() {
@@ -60,17 +68,13 @@ class ProductToPub extends ProductBase {
       <View style={styles.container}>
         <FlatList
           data={this.props.data}
-          renderItem={this._renderItem}
-          keyExtractor={this._keyExtractor}/>
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}/>
         <ActionButton
           offsetX={20}
           offsetY={65}
           buttonColor="rgba(231,76,60,1)"
-          onPress={() => Navigation.push(this.props.componentId, {
-            component: {
-              name: 'navigation.somiaGo.ProductNew',
-            }
-          })} />
+          onPress={this.launchProductNewScreen} />
       </View>
     );
   }

@@ -6,29 +6,30 @@ import { iconsMap } from '../../assets/icons';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const InputWithButton = props => {
-  const { onPress } = props;
+  const { label, value, onChangeText, onPress, iconName } = props;
 
   return (
     <View style={styles.container}>
       <View
         style={styles.currencyContainer}>
-        <Text style={styles.currencyText}>CNY</Text>
+        <Text style={styles.currencyText}>{label}</Text>
       </View>
       <View style={styles.border} />
       <TextInput
         style={styles.input}
         keyboardType="numeric"
         underlineColorAndroid="transparent"
-        {...props}
+        value={value}
+        onChangeText={onChangeText}
       />
       <View style={styles.border} />
-      <TouchableHighlight
+      {iconName ? (
+        <TouchableHighlight
         //underlayColor={underlayColor}
         style={styles.calculatorContainer}
-        onPress={onPress}
-      >
-        <Icon name="ios-calculator" style={styles.calculator} />
-      </TouchableHighlight>
+        onPress={onPress}>
+        <Icon name={iconName} style={styles.calculator} />
+        </TouchableHighlight>) : null}
     </View>
   );
 };

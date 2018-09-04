@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import {View, Button, Text, TextInput, StyleSheet, TouchableHighlight, ScrollView, Image, KeyboardAvoidingView} from 'react-native';
+import {View, Button, Text, TextInput, StyleSheet, ScrollView, Image, KeyboardAvoidingView} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import { connect } from "react-redux";
 import { Provider } from "react-redux";
 
+import { iconsMap } from '../assets/icons';
 import ImageGridView from '../components/ImageGridView';
 import InputWithButton from '../components/TextInput';
 import {addProduct} from '../actions/products';
 import store from "../config/store";
-import { iconsMap } from '../assets/icons';
 
 class ProductNew extends Component {
   static get options() {
@@ -57,6 +57,14 @@ class ProductNew extends Component {
     });
   }
 
+  onCalculatorPressed = () => {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'navigation.somiaGo.Calculator',
+      }
+    })
+  }
+
   navigationButtonPressed({ buttonId }) {
     const id = Date.now() + Math.random().toString().slice(2);
     const newProduct = {
@@ -76,6 +84,7 @@ class ProductNew extends Component {
         <KeyboardAvoidingView behavior="padding">
           <ImageGridView onPickDone={this.onPickDone}/>
           <InputWithButton
+            label="CNY"
             value={this.state.price.toString()}
             onChangeText={
               text => {
@@ -86,7 +95,8 @@ class ProductNew extends Component {
                 console.log(this.state.price);
               }
             }
-            onPress={() => console.log("pressed.")} />
+            onPress={this.onCalculatorPressed}
+            iconName="ios-calculator" />
           <TextInput
             style={styles.descriptionInput}
             underlineColorAndroid="transparent"
