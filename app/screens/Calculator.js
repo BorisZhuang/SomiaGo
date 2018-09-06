@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {View, Text, TextInput, TouchableHighlight, KeyboardAvoidingView, StyleSheet} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import { Field, reduxForm } from "redux-form";
 import InputWithButton from '../components/TextInput';
 import { iconsMap } from '../assets/icons';
 
@@ -42,6 +43,13 @@ class Calculator extends Component {
       price: 0,
       description: 'Please add description here.'
     };
+    Navigation.events().bindComponent(this);
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    const { handleSubmit } = this.props;
+    handleSubmit();
+    Navigation.pop(this.props.componentId);
   }
 
   onMsrpChangeText = () => {
@@ -91,6 +99,17 @@ class Calculator extends Component {
       { color : '#FFFFFF' }
     ];
 
+    const msrpInput = (props) => {
+      const { input, ...inputProps } = props;
+      return (<TextInput
+        {...inputProps}
+        style={styles.input}
+        keyboardType="numeric"
+        underlineColorAndroid="transparent"
+        placeholder="0"
+        onChangeText={input.onChange} />)
+    };
+
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -101,13 +120,7 @@ class Calculator extends Component {
                 <Text style={styles.labelText}>MSRP (USD)</Text>
               </View>
               <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="numeric"
-                  underlineColorAndroid="transparent"
-                  placeholder="0"
-                  value={this.state.price.toString()}
-                  onChangeText={this.onMsrpChangeText} />
+                <Field name='msrpInput' component={msrpInput}/>
               </View>
             </View>
             <View style={styles.rowContainer}>
@@ -308,4 +321,6 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Calculator;
+export default reduxForm({
+  form: 'calculator'
+})(Calculator);
