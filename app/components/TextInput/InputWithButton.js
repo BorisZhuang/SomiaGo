@@ -6,30 +6,56 @@ import { iconsMap } from '../../assets/icons';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const InputWithButton = props => {
-  const { label, value, onChangeText, onPress, iconName } = props;
+  const { label, labelStyle, value, editable, onChangeText, placeholder,
+    iconNames, onPress, position, keyboardType } = props;
+
+  const constainerStyle = [styles.container];
+  switch(position) {
+    case 'top':
+      constainerStyle.push(styles.topContainerBorder);
+      break;
+    case 'middle':
+      constainerStyle.push(styles.middleContainerBorder);
+      break;
+    case 'bottom':
+      constainerStyle.push(styles.bottomContainerBorder);
+      break;
+    default:
+      constainerStyle.push(styles.containerBorder);
+  }
+
+  const labelTextStyle = [styles.labelText];
+  if (labelStyle) {
+    labelTextStyle.push(labelStyle);
+  }
+
+  const inputContainerStyle = [styles.inputContainer];
+  if (editable === false) {
+    inputContainerStyle.push({backgroundColor: '#F0F0F0'});
+  }
 
   return (
-    <View style={styles.container}>
-      <View
-        style={styles.currencyContainer}>
-        <Text style={styles.currencyText}>{label}</Text>
+    <View style={constainerStyle}>
+      <View style={styles.labelContainer}>
+        <Text style={labelTextStyle}>{label}</Text>
       </View>
-      <View style={styles.border} />
-      <TextInput
-        style={styles.input}
-        keyboardType="numeric"
-        underlineColorAndroid="transparent"
-        value={value}
-        onChangeText={onChangeText}
-      />
-      <View style={styles.border} />
-      {iconName ? (
+      <View style={inputContainerStyle}>
+        <TextInput style={styles.input}
+          keyboardType={keyboardType ? keyboardType : "numeric"}
+          underlineColorAndroid="transparent"
+          value={value}
+          editable={editable}
+          placeholder={placeholder}
+          onChangeText={onChangeText}
+        />
+      </View>
+      {iconNames ? iconNames.map((iconName)=>(
         <TouchableHighlight
-        //underlayColor={underlayColor}
-        style={styles.calculatorContainer}
-        onPress={onPress}>
-        <Icon name={iconName} style={styles.calculator} />
-        </TouchableHighlight>) : null}
+          //underlayColor={underlayColor}
+          style={styles.iconContainer}
+          onPress={onPress}>
+          <Icon name={iconName} style={styles.icon} />
+        </TouchableHighlight>)) : null}
     </View>
   );
 };

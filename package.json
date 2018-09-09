@@ -8,6 +8,7 @@
     "run-android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
   "dependencies": {
+    "formik": "^1.2.0",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-action-button": "^2.8.5",
@@ -16,7 +17,6 @@
     "react-native-vector-icons": "^5.0.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "redux-form": "^7.4.2",
     "redux-log": "^2.0.0"
   },
   "devDependencies": {

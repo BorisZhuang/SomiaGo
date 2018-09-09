@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {Button, View, Text, TextInput, TouchableHighlight, KeyboardAvoidingView, StyleSheet} from 'react-native';
+import {Button, View, KeyboardAvoidingView, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Formik } from "formik";
+import InputWithButton from "../TextInput";
 import styles from "./styles";
 
 class CalculatorForm extends Component {
@@ -41,8 +42,8 @@ class CalculatorForm extends Component {
     console.log("minus is pressed.");
   }
 
-  onSubmitPressed = () => {
-    console.log("submit is pressed.")
+  onSubmitPressed = values => {
+    console.log(values);
   }
 
   render() {
@@ -56,174 +57,108 @@ class CalculatorForm extends Component {
       { color : '#FFFFFF' }
     ];
 
-    const msrpInput = (props) => {
-      const { input, ...inputProps } = props;
-      return (<TextInput
-        style={styles.input}
-        keyboardType="numeric"
-        underlineColorAndroid="transparent"
-        placeholder="0"
-        onChangeText={input.onChange}
-        {...inputProps} />)
-    };
-
     return (
-      <View style={styles.container}>
-        <KeyboardAvoidingView style={styles.container} behavior="padding">
-          {/* MSRP section */}
-          <View style={styles.groupContainer}>
-            <View style={styles.rowContainer}>
-              <View style={styles.labelContainer}>
-                <Text style={styles.labelText}>MSRP (USD)</Text>
-              </View>
-              <View style={styles.inputContainer}>
-                <TextInput style={styles.input}
-                  keyboardType="numeric"
-                  underlineColorAndroid="transparent"
-                  placeholder="0"
-                  onChangeText={this.onMsrpChangeText} />
-              </View>
-            </View>
-             <View style={styles.rowContainer}>
-              <View
-                style={[styles.labelContainer, {marginBottom: 1}]}>
-                <Text style={styles.labelText}>Discount</Text>
-              </View>
-              <View style={[styles.inputContainer, {marginBottom: 1}]}>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="numeric"
-                  underlineColorAndroid="transparent"
-                  placeholder='0'
-                  onChangeText={this.onDiscountChangeText} />
-              </View>
-            </View>
-          </View>
-          {/* Shipping section */}
-          <View style={styles.groupContainer}>
-            <View style={styles.rowContainer}>
-              <View style={styles.labelContainer}>
-                <Text style={styles.labelText}>Weight (pound)</Text>
-              </View>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="numeric"
-                  underlineColorAndroid="transparent"
-                  //value={this.state.price.toString()}
-                  placeholder='0'
-                  onChangeText={this.onWeightChangeText} />
-              </View>
-            </View>
-            <View style={styles.rowContainer}>
-              <View
-                style={[styles.labelContainer, {marginBottom: 1}]}>
-                <Text style={styles.labelText}>Shipping (per pound)</Text>
-              </View>
-              <View style={[styles.inputContainer, {marginBottom: 1}]}>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="numeric"
-                  underlineColorAndroid="transparent"
-                  //value={this.state.price.toString()}
-                  placeholder='0'
-                  onChangeText={this.onShippingChangeText} />
-              </View>
-            </View>
-          </View>
-          {/* Tax/Currency/Profit section */}
-          <View style={styles.groupContainer}>
-            <View style={styles.rowContainer}>
-              <View style={styles.labelContainer}>
-                <Text style={styles.labelText}>Tax (%)</Text>
-              </View>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="numeric"
-                  underlineColorAndroid="transparent"
-                  //value={this.state.price.toString()}
-                  placeholder='0'
-                  onChangeText={this.onTaxChangeText} />
-              </View>
-            </View>
-            <View style={styles.rowContainer}>
-              <View style={styles.labelContainer}>
-                <Text style={styles.labelText}>Profit (%)</Text>
-              </View>
-              <View style={[styles.inputContainer, {width: '25%'}]}>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="numeric"
-                  underlineColorAndroid="transparent"
-                  //value={this.state.price.toString()}
-                  placeholder='0'
-                  onChangeText={this.onProfitChangeText} />
-              </View>
-              <View style={styles.plusMinusContainer}>
-                <TouchableHighlight onPress={this.onPlusPressed}>
-                  <Icon name="ios-add" style={styles.icon} />
-                </TouchableHighlight>
-                <View style={styles.border} />
-                <TouchableHighlight onPress={this.onMinusPressed}>
-                  <Icon name="ios-remove" style={styles.icon} />
-                </TouchableHighlight>
-              </View>
-            </View>
-            <View style={styles.rowContainer}>
-              <View style={[styles.labelContainer, {marginBottom: 1}]}>
-                <Text style={styles.labelText}>Currency</Text>
-              </View>
-              <View style={styles.border} />
-              <View style={[styles.inputContainer, {marginBottom: 1}]}>
-                <TextInput
-                style={styles.input}
-                keyboardType="numeric"
-                underlineColorAndroid="transparent"
-                //value={this.state.price.toString()}
+      <Formik
+        initialValues={{
+          msrp: '',
+          discount:'',
+          weight: '',
+          shippingRate: '',
+          tax: '',
+          currency:'',
+          profitRate:'',
+          price:'',
+          profit: ''}}
+        onSubmit={this.onSubmitPressed}>
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
+          <KeyboardAvoidingView style={styles.container} behavior="padding">
+            {/* MSRP section */}
+            <View style={styles.groupContainer}>
+              <InputWithButton
+                label="MSRP (USD)"
+                labelStyle={styles.labelText}
+                value={values.msrp}
+                onChangeText={handleChange('msrp')}
                 placeholder='0'
-                onChangeText={this.onCurrencyChangeText} />
-              </View>
+                position='top' />
+              <InputWithButton
+                label="Discount"
+                labelStyle={styles.labelText}
+                value={values.discount}
+                onChangeText={handleChange('discount')}
+                placeholder='0'
+                position='bottom' />
             </View>
-          </View>
-          {/* Price/Profit section */}
-          <View style={priceGroupContainerStyle}>
-            <View style={styles.rowContainer}>
-              <View
-                style={styles.labelContainer}>
-                <Text style={styles.labelText}>Price (CNY)</Text>
-              </View>
-              <TextInput
-                style={priceInputStyle}
+            {/* Shipping section */}
+            <View style={styles.groupContainer}>
+              <InputWithButton
+                  label="Weight (pound)"
+                  labelStyle={styles.labelText}
+                  value={values.weight}
+                  onChangeText={handleChange('weight')}
+                  placeholder='0'
+                  position='top' />
+              <InputWithButton
+                  label="Shipping (per pound)"
+                  labelStyle={styles.labelText}
+                  value={values.shippingRate}
+                  onChangeText={handleChange('shippingRate')}
+                  placeholder='0'
+                  position='bottom' />
+            </View>
+            {/* Tax/Currency/Profit section */}
+            <View style={styles.groupContainer}>
+              <InputWithButton
+                label="Tax (%)"
+                labelStyle={styles.labelText}
+                value={values.tax}
+                onChangeText={handleChange('tax')}
+                placeholder='0'
+                position='top' />
+              <InputWithButton
+                label="Currency"
+                labelStyle={styles.labelText}
+                value={values.currency}
+                onChangeText={handleChange('currency')}
+                placeholder='0'
+                position='middle' />
+              <InputWithButton
+                label='Profit (%)'
+                labelStyle={styles.labelText}
+                value={values.profitRate}
+                onChangeText={handleChange('profitRate')}
+                placeholder='0'
+                onPress={this.onPlusPressed}
+                iconNames={["ios-add", 'ios-remove']}
+                position='bottom' />
+            </View>
+            {/* Price/Profit section */}
+            <View style={styles.groupContainer}>
+              <InputWithButton
+                label="Price (CNY)"
+                labelStyle={styles.labelText}
+                value={values.price}
                 editable={false}
-                keyboardType="numeric"
-                underlineColorAndroid="transparent"
-                //value={this.state.price.toString()}
+                //onChangeText={handleChange('price')}
                 placeholder='0'
-                onChangeText={this.onMsrpChangeText} />
-            </View>
-            <View style={styles.rowContainer}>
-              <View
-                style={[styles.labelContainer, {marginBottom: 1}]}>
-                <Text style={styles.labelText}>Profit (CNY)</Text>
-              </View>
-              <TextInput
-                style={priceInputStyle}
+                position='top' />
+              <InputWithButton
+                label="Profit (CNY)"
+                labelStyle={styles.labelText}
+                value={values.profit}
                 editable={false}
-                keyboardType="numeric"
-                underlineColorAndroid="transparent"
-                //value={this.state.price.toString()}
+                //onChangeText={handleChange('profit')}
                 placeholder='0'
-                onChangeText={this.onDiscountChangeText} />
+                position='bottom' />
             </View>
-          </View>
-          {/* Submit section */}
-          <Button
-            onPress={this.onSubmitPressed}
-            title="Submit"
-            color="green"/>
-        </KeyboardAvoidingView>
-      </View>
+            {/* Submit section */}
+            <Button
+              onPress={handleSubmit}
+              title="Submit"
+              color="green"/>
+          </KeyboardAvoidingView>
+        )}
+      </Formik>
     );
   }
 }

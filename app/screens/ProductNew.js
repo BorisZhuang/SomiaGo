@@ -95,8 +95,9 @@ class ProductNew extends Component {
                 console.log(this.state.price);
               }
             }
+            placeholder={'0'}
             onPress={this.onCalculatorPressed}
-            iconName="ios-calculator" />
+            iconNames={["ios-calculator"]} />
           <TextInput
             style={styles.descriptionInput}
             underlineColorAndroid="transparent"
@@ -116,6 +117,7 @@ class ProductNew extends Component {
     );
   }
 }
+const BORDER_RADIUS = 4;
 
 const styles = StyleSheet.create({
   container: {
@@ -124,7 +126,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     paddingVertical: 10,
-    paddingHorizontal: 10
+    paddingHorizontal: 8
   },
   descriptionInput: {
     fontSize: 20,
