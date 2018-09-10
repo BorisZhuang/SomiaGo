@@ -6,31 +6,31 @@ import InputWithButton from "../TextInput";
 import styles from "./styles";
 
 class CalculatorForm extends Component {
-  onMsrpChangeText = () => {
+  onMsrpEndEditing = () => {
     console.log("Msrp is changed.");
   }
 
-  onDiscountChangeText = () => {
+  onDiscountEndEditing = () => {
     console.log("Discount is changed.");
   }
 
-  onWeightChangeText = () => {
+  onWeightEndEditing = () => {
     console.log("Weight is changed.");
   }
 
-  onShippingChangeText = () => {
+  onShippingEndEditing = () => {
     console.log("Shipping is changed.");
   }
 
-  onTaxChangeText = () => {
+  onTaxEndEditing = () => {
     console.log("Tax is changed.");
   }
 
-  onProfitChangeText = () => {
+  onProfitEndEditing = () => {
     console.log("Profit rate is changed.");
   }
 
-  onCurrencyChangeText = () => {
+  onCurrencyEndEditing = () => {
     console.log("Currency is changed.");
   }
 
@@ -79,6 +79,7 @@ class CalculatorForm extends Component {
                 labelStyle={styles.labelText}
                 value={values.msrp}
                 onChangeText={handleChange('msrp')}
+                onEndEditing={this.onMsrpEndEditing}
                 placeholder='0'
                 position='top' />
               <InputWithButton
@@ -86,6 +87,7 @@ class CalculatorForm extends Component {
                 labelStyle={styles.labelText}
                 value={values.discount}
                 onChangeText={handleChange('discount')}
+                onEndEditing={this.onDiscountEndEditing}
                 placeholder='0'
                 position='bottom' />
             </View>
@@ -96,6 +98,7 @@ class CalculatorForm extends Component {
                   labelStyle={styles.labelText}
                   value={values.weight}
                   onChangeText={handleChange('weight')}
+                  onEndEditing={this.onWeightEndEditing}
                   placeholder='0'
                   position='top' />
               <InputWithButton
@@ -103,6 +106,7 @@ class CalculatorForm extends Component {
                   labelStyle={styles.labelText}
                   value={values.shippingRate}
                   onChangeText={handleChange('shippingRate')}
+                  onEndEditing={this.onShippingEndEditing}
                   placeholder='0'
                   position='bottom' />
             </View>
@@ -113,6 +117,7 @@ class CalculatorForm extends Component {
                 labelStyle={styles.labelText}
                 value={values.tax}
                 onChangeText={handleChange('tax')}
+                onEndEditing={this.onTaxEndEditing}
                 placeholder='0'
                 position='top' />
               <InputWithButton
@@ -120,6 +125,7 @@ class CalculatorForm extends Component {
                 labelStyle={styles.labelText}
                 value={values.currency}
                 onChangeText={handleChange('currency')}
+                onEndEditing={this.onCurrencyEndEditing}
                 placeholder='0'
                 position='middle' />
               <InputWithButton
@@ -127,8 +133,9 @@ class CalculatorForm extends Component {
                 labelStyle={styles.labelText}
                 value={values.profitRate}
                 onChangeText={handleChange('profitRate')}
+                onEndEditing={this.onProfitEndEditing}
                 placeholder='0'
-                onPress={this.onPlusPressed}
+                onPress={[this.onPlusPressed, this.onMinusPressed]}
                 iconNames={["ios-add", 'ios-remove']}
                 position='bottom' />
             </View>
@@ -139,7 +146,7 @@ class CalculatorForm extends Component {
                 labelStyle={styles.labelText}
                 value={values.price}
                 editable={false}
-                //onChangeText={handleChange('price')}
+                onChangeText={handleChange('price')}
                 placeholder='0'
                 position='top' />
               <InputWithButton
@@ -147,7 +154,7 @@ class CalculatorForm extends Component {
                 labelStyle={styles.labelText}
                 value={values.profit}
                 editable={false}
-                //onChangeText={handleChange('profit')}
+                onChangeText={handleChange('profit')}
                 placeholder='0'
                 position='bottom' />
             </View>

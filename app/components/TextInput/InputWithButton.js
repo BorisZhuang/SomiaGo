@@ -6,9 +6,11 @@ import { iconsMap } from '../../assets/icons';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const InputWithButton = props => {
-  const { label, labelStyle, value, editable, onChangeText, placeholder,
+  const { label, labelStyle, value, editable, onChangeText, onEndEditing, placeholder,
     iconNames, onPress, position, keyboardType } = props;
 
+  const iconNamesArray = iconNames ? Array.from(iconNames) : [];
+  const onPressArray = onPress ? Array.from(onPress) : [];
   const constainerStyle = [styles.container];
   switch(position) {
     case 'top':
@@ -47,13 +49,13 @@ const InputWithButton = props => {
           editable={editable}
           placeholder={placeholder}
           onChangeText={onChangeText}
-        />
+          onEndEditing={onEndEditing} />
       </View>
-      {iconNames ? iconNames.map((iconName)=>(
+      {iconNames ? iconNamesArray.map((iconName, index)=>(
         <TouchableHighlight
           //underlayColor={underlayColor}
           style={styles.iconContainer}
-          onPress={onPress}>
+          onPress={onPressArray[index]}>
           <Icon name={iconName} style={styles.icon} />
         </TouchableHighlight>)) : null}
     </View>

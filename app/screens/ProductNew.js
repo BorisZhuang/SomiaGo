@@ -96,7 +96,7 @@ class ProductNew extends Component {
               }
             }
             placeholder={'0'}
-            onPress={this.onCalculatorPressed}
+            onPress={[this.onCalculatorPressed]}
             iconNames={["ios-calculator"]} />
           <TextInput
             style={styles.descriptionInput}
