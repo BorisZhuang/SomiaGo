@@ -78,7 +78,7 @@ export const setRootToProduct = () => {
                       selectedTextColor: 'blue',
                       selectedIconColor: 'blue',
                       text: 'To Publish',
-                      icon: iconsMap['circle-thin'],
+                      icon: iconsMap['burst-new'],
                     }
                   }
                 }
@@ -104,7 +104,7 @@ export const setRootToProduct = () => {
                       selectedTextColor: 'blue',
                       selectedIconColor: 'blue',
                       text: 'Published',
-                      icon: iconsMap['check-circle-o'],
+                      icon: iconsMap['share-square-o'],
                     }
                   }
                 }

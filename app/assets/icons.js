@@ -5,6 +5,7 @@
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Foundation from "react-native-vector-icons/Foundation";
 
 // define your suffixes by yourself..
 // here we use active, big, small, very-big..
@@ -19,8 +20,8 @@ const icons = {
 
   // Use other Icon provider, see the logic at L39
   "bars": [30, "#bbb", FontAwesome],
-  "circle-thin": [30, "#bbb", FontAwesome],
-  "check-circle-o": [30, "#bbb", FontAwesome],
+  "burst-new": [30, "#bbb", Foundation],
+  "share-square-o": [30, "#bbb", FontAwesome],
   "favorite": [30, "#bbb", MaterialIcons],
   "facebook": [30, "#bbb", FontAwesome],
   "facebook--active": [30, "#fff", FontAwesome],

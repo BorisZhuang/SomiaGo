@@ -18,7 +18,7 @@ import store from "../config/store";
 export default function registerScreens() {
   Navigation.registerComponent('navigation.somiaGo.Home', () => Home);
   Navigation.registerComponent('navigation.somiaGo.SideMenu', () => SideMenu);
-  Navigation.registerComponent('navigation.somiaGo.Calculator', () => Calculator);
+  Navigation.registerComponentWithRedux('navigation.somiaGo.Calculator', () => Calculator, Provider, store);
   Navigation.registerComponentWithRedux('navigation.somiaGo.ProductToPub', () => ProductToPub, Provider, store);
   Navigation.registerComponent('navigation.somiaGo.ProductPub', () => ProductPub);
   Navigation.registerComponent('navigation.somiaGo.ProductFavo', () => ProductFavo);

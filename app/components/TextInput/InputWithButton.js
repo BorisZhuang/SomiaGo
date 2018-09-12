@@ -6,7 +6,7 @@ import { iconsMap } from '../../assets/icons';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const InputWithButton = props => {
-  const { label, labelStyle, value, editable, onChangeText, onEndEditing, placeholder,
+  const { label, labelStyle, value, editable, onChangeText, onEndEditing, onBlur, placeholder,
     iconNames, onPress, position, keyboardType } = props;
 
   const iconNamesArray = iconNames ? Array.from(iconNames) : [];
@@ -49,7 +49,8 @@ const InputWithButton = props => {
           editable={editable}
           placeholder={placeholder}
           onChangeText={onChangeText}
-          onEndEditing={onEndEditing} />
+          onEndEditing={onEndEditing}
+          onBlur={onBlur} />
       </View>
       {iconNames ? iconNamesArray.map((iconName, index)=>(
         <TouchableHighlight
