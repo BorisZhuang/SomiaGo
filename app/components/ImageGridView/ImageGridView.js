@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, TouchableHighlight, Image} from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
+import styles from "./styles";
 
 export default class ImageGridView extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class ImageGridView extends Component {
 					underlayColor={'#fff'}
 					onPress={this.openImgPicker}
 				>
-					<Image source={require('../Images/add.png')} style={{ width: 100, height: 100 }} />
+					<Image source={require('../../Images/add.png')} style={{ width: 100, height: 100 }} />
 				</TouchableHighlight>
 			);
 		}
@@ -75,13 +76,3 @@ export default class ImageGridView extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    //flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    flexDirection: 'row',
-    flexWrap: 'wrap'
-  }
-})

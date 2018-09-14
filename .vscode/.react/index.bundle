@@ -1747,7 +1747,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   ;
-},1,[2,12,525,546,548,605,625,676,677,678,679,688,689,690,684],"index.js");
+},1,[2,12,525,546,548,605,625,676,677,678,679,690,691,692,686],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -94500,6 +94500,10 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
@@ -94543,26 +94547,108 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
       _this = _possibleConstructorReturn(this, _getPrototypeOf(CalculatorForm).call(this, props));
 
-      _this.onPlusPressed = function () {
-        console.log("plus is pressed.");
+      _this.handleSubmit = function (e) {
+        _this.props.updateCalculator(_this.state.msrp, _this.state.discount, _this.state.weight, _this.state.shippingRate, _this.state.tax, _this.state.currency, _this.state.profitRate, _this.state.price, _this.state.profit);
+
+        e.preventDefault();
       };
 
-      _this.onMinusPressed = function () {
-        console.log("minus is pressed.");
+      _this.state = {
+        msrp: _this.props.msrp,
+        discount: _this.props.discount,
+        weight: _this.props.weight,
+        shippingRate: _this.props.shippingRate,
+        tax: _this.props.tax,
+        currency: _this.props.currency,
+        profitRate: _this.props.profitRate,
+        price: _this.props.price,
+        profit: _this.props.profit
       };
-
-      _this.calculate = function (values) {
-        values.price = values.msrp + values.discount + values.weight + values.shippingRate + values.tax + values.currency + values.profitRate;
-        values.profit = values.msrp + values.discount + values.weight + values.shippingRate + values.tax + values.currency + values.profitRate;
-      };
-
       return _this;
     }
 
     _createClass(CalculatorForm, [{
+      key: "getCurrentState",
+      value: function getCurrentState() {
+        return {
+          msrp: parseFloat(this.state.msrp),
+          discount: parseFloat(this.state.discount),
+          tax: parseFloat(this.state.tax),
+          profitRate: parseFloat(this.state.profitRate),
+          currency: parseFloat(this.state.currency),
+          weight: parseFloat(this.state.weight),
+          shippingRate: parseFloat(this.state.shippingRate)
+        };
+      }
+    }, {
+      key: "onPlusPressed",
+      value: function onPlusPressed() {
+        var _this2 = this;
+
+        var profit_Rate = this.state.profitRate;
+        this.setState({
+          profitRate: profit_Rate + 1
+        }, function () {
+          return _this2.calculate();
+        });
+      }
+    }, {
+      key: "onMinusPressed",
+      value: function onMinusPressed() {
+        var _this3 = this;
+
+        var profit_Rate = this.state.profitRate;
+        this.setState({
+          profitRate: profit_Rate - 1
+        }, function () {
+          return _this3.calculate();
+        });
+      }
+    }, {
+      key: "calculate",
+      value: function calculate() {
+        this.calculatePrice();
+        this.calculateProfit();
+      }
+    }, {
+      key: "calculatePrice",
+      value: function calculatePrice() {
+        var _this$getCurrentState = this.getCurrentState(),
+            msrp = _this$getCurrentState.msrp,
+            discount = _this$getCurrentState.discount,
+            tax = _this$getCurrentState.tax,
+            profitRate = _this$getCurrentState.profitRate,
+            currency = _this$getCurrentState.currency,
+            weight = _this$getCurrentState.weight,
+            shippingRate = _this$getCurrentState.shippingRate;
+
+        purchasePrice = msrp * discount / 100 * (1 + tax / 100);
+        shippingCost = weight * shippingRate;
+        sellingPrice = purchasePrice * (1 + profitRate / 100) + shippingCost;
+        this.setState({
+          price: Math.round(sellingPrice * currency)
+        });
+      }
+    }, {
+      key: "calculateProfit",
+      value: function calculateProfit() {
+        var _this$getCurrentState2 = this.getCurrentState(),
+            msrp = _this$getCurrentState2.msrp,
+            discount = _this$getCurrentState2.discount,
+            tax = _this$getCurrentState2.tax,
+            profitRate = _this$getCurrentState2.profitRate,
+            currency = _this$getCurrentState2.currency;
+
+        purchasePrice = msrp * discount / 100 * (1 + tax / 100);
+        profit = purchasePrice * profitRate / 100;
+        this.setState({
+          profit: Math.round(profit * currency)
+        });
+      }
+    }, {
       key: "render",
       value: function render() {
-        var _this2 = this;
+        var _this4 = this;
 
         var priceGroupContainerStyle = [_styles.default.groupContainer, {
           backgroundColor: '#b0b0b0'
@@ -94571,206 +94657,202 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           color: '#FFFFFF'
         }];
         var updateCalculator = this.props.updateCalculator;
-        return _react.default.createElement(_formik.Formik, {
-          initialValues: {
-            msrp: this.props.msrp,
-            discount: this.props.discount,
-            weight: this.props.weight,
-            shippingRate: this.props.shippingRate,
-            tax: this.props.tax,
-            currency: this.props.currency,
-            profitRate: this.props.profitRate
-          },
-          onSubmit: function onSubmit(values) {
-            return updateCalculator(values);
-          },
+        return _react.default.createElement(_reactNative.KeyboardAvoidingView, {
+          style: _styles.default.container,
+          behavior: "padding",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 41
+            lineNumber: 93
           }
-        }, function (_ref) {
-          var values = _ref.values,
-              handleChange = _ref.handleChange,
-              handleBlur = _ref.handleBlur,
-              handleSubmit = _ref.handleSubmit;
-          return _react.default.createElement(_reactNative.KeyboardAvoidingView, {
-            style: _styles.default.container,
-            behavior: "padding",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 53
-            }
-          }, _react.default.createElement(_reactNative.View, {
-            style: _styles.default.groupContainer,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 55
-            }
-          }, _react.default.createElement(_TextInput.default, {
-            name: "msrp",
-            label: "MSRP (USD)",
-            labelStyle: _styles.default.labelText,
-            value: values.msrp,
-            onChangeText: handleChange('msrp'),
-            onBlur: function onBlur(e) {
-              handleBlur(e);
-
-              _this2.calculate(values);
-            },
-            placeholder: "0",
-            position: "top",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 56
-            }
-          }), _react.default.createElement(_TextInput.default, {
-            label: "Discount",
-            labelStyle: _styles.default.labelText,
-            value: values.discount,
-            onChangeText: handleChange('discount'),
-            onBlur: function onBlur(e) {
-              handleBlur(e);
-
-              _this2.calculate(values);
-            },
-            placeholder: "0",
-            position: "bottom",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 68
-            }
-          })), _react.default.createElement(_reactNative.View, {
-            style: _styles.default.groupContainer,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 81
-            }
-          }, _react.default.createElement(_TextInput.default, {
-            label: "Weight (pound)",
-            labelStyle: _styles.default.labelText,
-            value: values.weight,
-            onChangeText: handleChange('weight'),
-            onBlur: function onBlur(e) {
-              handleBlur(e);
-
-              _this2.calculate(values);
-            },
-            placeholder: "0",
-            position: "top",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 82
-            }
-          }), _react.default.createElement(_TextInput.default, {
-            label: "Shipping (per pound)",
-            labelStyle: _styles.default.labelText,
-            value: values.shippingRate,
-            onChangeText: handleChange('shippingRate'),
-            onBlur: function onBlur(e) {
-              handleBlur(e);
-
-              _this2.calculate(values);
-            },
-            placeholder: "0",
-            position: "bottom",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 93
-            }
-          })), _react.default.createElement(_reactNative.View, {
-            style: _styles.default.groupContainer,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 106
-            }
-          }, _react.default.createElement(_TextInput.default, {
-            label: "Tax (%)",
-            labelStyle: _styles.default.labelText,
-            value: values.tax,
-            onChangeText: handleChange('tax'),
-            onBlur: function onBlur(e) {
-              handleBlur(e);
-
-              _this2.calculate(values);
-            },
-            placeholder: "0",
-            position: "top",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 107
-            }
-          }), _react.default.createElement(_TextInput.default, {
-            label: "Currency",
-            labelStyle: _styles.default.labelText,
-            value: values.currency,
-            onChangeText: handleChange('currency'),
-            onBlur: function onBlur(e) {
-              handleBlur(e);
-
-              _this2.calculate(values);
-            },
-            placeholder: "0",
-            position: "middle",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 118
-            }
-          }), _react.default.createElement(_TextInput.default, {
-            label: "Profit (%)",
-            labelStyle: _styles.default.labelText,
-            value: values.profitRate,
-            onChangeText: handleChange('profitRate'),
-            onBlur: function onBlur(e) {
-              handleBlur(e);
-
-              _this2.calculate(values);
-            },
-            placeholder: "0",
-            position: "bottom",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 129
-            }
-          })), _react.default.createElement(_reactNative.View, {
-            style: _styles.default.groupContainer,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 144
-            }
-          }, _react.default.createElement(_TextInput.default, {
-            label: "Price (CNY)",
-            labelStyle: _styles.default.labelText,
-            value: values.price,
-            editable: false,
-            onChangeText: handleChange('price'),
-            placeholder: "0",
-            position: "top",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 145
-            }
-          }), _react.default.createElement(_TextInput.default, {
-            label: "Profit (CNY)",
-            labelStyle: _styles.default.labelText,
-            value: values.profit,
-            editable: false,
-            onChangeText: handleChange('profit'),
-            placeholder: "0",
-            position: "bottom",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 153
-            }
-          })), _react.default.createElement(_reactNative.Button, {
-            onPress: handleSubmit,
-            title: "Submit",
-            color: "green",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 163
-            }
-          }));
-        });
+        }, _react.default.createElement(_reactNative.View, {
+          style: _styles.default.groupContainer,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 95
+          }
+        }, _react.default.createElement(_TextInput.default, {
+          label: "MSRP (USD)",
+          labelStyle: _styles.default.labelText,
+          value: "" + this.state.msrp,
+          onChangeText: function onChangeText(text) {
+            return _this4.setState({
+              msrp: parseFloat(text)
+            });
+          },
+          onBlur: function onBlur() {
+            return _this4.calculate();
+          },
+          placeholder: "0",
+          position: "top",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 96
+          }
+        }), _react.default.createElement(_TextInput.default, {
+          label: "Discount (%)",
+          labelStyle: _styles.default.labelText,
+          value: "" + this.state.discount,
+          onChangeText: function onChangeText(text) {
+            return _this4.setState({
+              discount: parseFloat(text)
+            });
+          },
+          onBlur: function onBlur() {
+            return _this4.calculate();
+          },
+          placeholder: "0",
+          position: "bottom",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 104
+          }
+        })), _react.default.createElement(_reactNative.View, {
+          style: _styles.default.groupContainer,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 114
+          }
+        }, _react.default.createElement(_TextInput.default, {
+          label: "Weight (pound)",
+          labelStyle: _styles.default.labelText,
+          value: "" + this.state.weight,
+          onChangeText: function onChangeText(text) {
+            return _this4.setState({
+              weight: parseFloat(text)
+            });
+          },
+          onBlur: function onBlur() {
+            return _this4.calculate();
+          },
+          placeholder: "0",
+          position: "top",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 115
+          }
+        }), _react.default.createElement(_TextInput.default, {
+          label: "Shipping (per pound)",
+          labelStyle: _styles.default.labelText,
+          value: "" + this.state.shippingRate,
+          onChangeText: function onChangeText(text) {
+            return _this4.setState({
+              shippingRate: parseFloat(text)
+            });
+          },
+          onBlur: function onBlur() {
+            return _this4.calculate();
+          },
+          placeholder: "0",
+          position: "bottom",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 123
+          }
+        })), _react.default.createElement(_reactNative.View, {
+          style: _styles.default.groupContainer,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 133
+          }
+        }, _react.default.createElement(_TextInput.default, {
+          label: "Tax (%)",
+          labelStyle: _styles.default.labelText,
+          value: "" + this.state.tax,
+          onChangeText: function onChangeText(text) {
+            return _this4.setState({
+              tax: parseFloat(text)
+            });
+          },
+          onBlur: function onBlur() {
+            return _this4.calculate();
+          },
+          placeholder: "0",
+          position: "top",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 134
+          }
+        }), _react.default.createElement(_TextInput.default, {
+          label: "Currency",
+          labelStyle: _styles.default.labelText,
+          value: "" + this.state.currency,
+          onChangeText: function onChangeText(text) {
+            return _this4.setState({
+              currency: parseFloat(text)
+            });
+          },
+          onBlur: function onBlur() {
+            return _this4.calculate();
+          },
+          placeholder: "0",
+          position: "middle",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 142
+          }
+        }), _react.default.createElement(_TextInput.default, {
+          label: "Profit (%)",
+          labelStyle: _styles.default.labelText,
+          value: "" + this.state.profitRate,
+          onChangeText: function onChangeText(text) {
+            return _this4.setState({
+              profitRate: parseFloat(text)
+            });
+          },
+          onBlur: function onBlur() {
+            return _this4.calculate();
+          },
+          placeholder: "0",
+          onPress: [function () {
+            return _this4.onPlusPressed();
+          }, function () {
+            return _this4.onMinusPressed();
+          }],
+          iconNames: ["ios-add", 'ios-remove'],
+          position: "bottom",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 150
+          }
+        })), _react.default.createElement(_reactNative.View, {
+          style: _styles.default.groupContainer,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 162
+          }
+        }, _react.default.createElement(_TextInput.default, {
+          label: "Price (CNY)",
+          labelStyle: _styles.default.labelText,
+          value: "" + this.state.price,
+          editable: false,
+          placeholder: "0",
+          position: "top",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 163
+          }
+        }), _react.default.createElement(_TextInput.default, {
+          label: "Profit (CNY)",
+          labelStyle: _styles.default.labelText,
+          value: "" + this.state.profit,
+          editable: false,
+          placeholder: "0",
+          position: "bottom",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 170
+          }
+        })), _react.default.createElement(_reactNative.Button, {
+          onPress: function onPress(e) {
+            return _this4.handleSubmit(e);
+          },
+          title: "Submit",
+          color: "green",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 179
+          }
+        }));
       }
     }]);
 
@@ -94782,29 +94864,13 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   CalculatorForm = _wrapComponent("CalculatorForm")(CalculatorForm);
 
   var mapStateToProps = function mapStateToProps(state) {
-    var _state$calculator = state.calculator,
-        msrp = _state$calculator.msrp,
-        discount = _state$calculator.discount,
-        weight = _state$calculator.weight,
-        shippingRate = _state$calculator.shippingRate,
-        tax = _state$calculator.tax,
-        currency = _state$calculator.currency,
-        profitRate = _state$calculator.profitRate;
-    return {
-      msrp: msrp,
-      discount: discount,
-      weight: weight,
-      shippingRate: shippingRate,
-      tax: tax,
-      currency: currency,
-      profitRate: profitRate
-    };
+    return _objectSpread({}, state.calculator);
   };
 
   var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-      updateCalculator: function updateCalculator(values) {
-        return dispatch((0, _calculator.updateCalculator)(values));
+      updateCalculator: function updateCalculator(msrp, discount, weight, shippingRate, tax, currency, profitRate, price, profit) {
+        dispatch((0, _calculator.updateCalculator)(msrp, discount, weight, shippingRate, tax, currency, profitRate, price, profit));
       }
     };
   };
@@ -99663,23 +99729,18 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var UPDATE_CALCULATOR = "UPDATE_CALCULATOR";
   exports.UPDATE_CALCULATOR = UPDATE_CALCULATOR;
 
-  var updateCalculator = function updateCalculator(_ref) {
-    var msrp = _ref.msrp,
-        discount = _ref.discount,
-        weight = _ref.weight,
-        shippingRate = _ref.shippingRate,
-        tax = _ref.tax,
-        currency = _ref.currency,
-        profitRate = _ref.profitRate;
+  var updateCalculator = function updateCalculator(msrp, discount, weight, shippingRate, tax, currency, profitRate, price, profit) {
     return {
       type: UPDATE_CALCULATOR,
-      msrp: msrp,
-      discount: discount,
-      weight: weight,
-      shippingRate: shippingRate,
-      tax: tax,
-      currency: currency,
-      profitRate: profitRate
+      msrp: parseFloat(msrp),
+      discount: parseFloat(discount),
+      weight: parseFloat(weight),
+      shippingRate: parseFloat(shippingRate),
+      tax: parseFloat(tax),
+      currency: parseFloat(currency),
+      profitRate: parseFloat(profitRate),
+      price: parseFloat(price),
+      profit: parseFloat(profit)
     };
   };
 
@@ -102645,7 +102706,20 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var _default2 = (0, _reactRedux.connect)()(ProductNew);
 
   exports.default = _default2;
-},679,[2,88,15,12,525,549,680,620,683,684],"ProductNew.js");
+},679,[2,88,15,12,525,549,680,620,685,686],"ProductNew.js");
+__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _ImageGridView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[0], "./ImageGridView"));
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  var _default = _ImageGridView.default;
+  exports.default = _default;
+},680,[681],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -102654,13 +102728,15 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[0], "react"));
 
-  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js"));
+  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./../../../node_modules/react-transform-hmr/lib/index.js"));
 
   var _reactNative = _$$_REQUIRE(_dependencyMap[2], "react-native");
 
   var _reactNativeImageCropPicker = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "react-native-image-crop-picker"));
 
-  var _jsxFileName = "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/components/ImageGridView.js";
+  var _styles = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "./styles"));
+
+  var _jsxFileName = "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/components/ImageGridView/ImageGridView.js";
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -102689,7 +102765,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
 
   var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index.default)({
-    filename: "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/components/ImageGridView.js",
+    filename: "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/components/ImageGridView/ImageGridView.js",
     components: _components,
     locals: [module],
     imports: [_react.default]
@@ -102741,26 +102817,26 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
             onPress: this.openImgPicker,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 26
+              lineNumber: 27
             }
           }, _react.default.createElement(_reactNative.Image, {
-            source: _$$_REQUIRE(_dependencyMap[4], '../Images/add.png'),
+            source: _$$_REQUIRE(_dependencyMap[5], '../../Images/add.png'),
             style: {
               width: 100,
               height: 100
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 31
+              lineNumber: 32
             }
           }));
         }
 
         return _react.default.createElement(_reactNative.View, {
-          style: styles.container,
+          style: _styles.default.container,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 37
+            lineNumber: 38
           }
         }, this.state.images ? this.state.images.map(function (image) {
           return _react.default.createElement(_reactNative.View, {
@@ -102772,7 +102848,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 40
+              lineNumber: 41
             }
           }, _react.default.createElement(_reactNative.TouchableHighlight, {
             activeOpacity: 1,
@@ -102781,7 +102857,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 48
+              lineNumber: 49
             }
           }, _react.default.createElement(_reactNative.Image, {
             style: {
@@ -102793,7 +102869,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 52
+              lineNumber: 53
             }
           })));
         }) : null, _react.default.createElement(_reactNative.View, {
@@ -102804,7 +102880,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 57
+            lineNumber: 58
           }
         }, defaultImgView));
       }
@@ -102814,7 +102890,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
         return _react.default.createElement(_reactNative.View, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 72
+            lineNumber: 73
           }
         }, this.createImageItem());
       }
@@ -102827,16 +102903,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = ImageGridView;
   exports.default = _default2;
-
-  var styles = _reactNative.StyleSheet.create({
-    container: {
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
-      flexDirection: 'row',
-      flexWrap: 'wrap'
-    }
-  });
-},680,[2,88,15,681,682],"ImageGridView.js");
+},681,[2,88,15,682,683,684],"ImageGridView.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -102851,7 +102918,26 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = _reactNative.NativeModules.ImageCropPicker;
   exports.default = _default;
-},681,[2,15],"index.js");
+},682,[2,15],"index.js");
+__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[0], "react-native");
+
+  var _default = styles = _reactNative.StyleSheet.create({
+    container: {
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      flexDirection: 'row',
+      flexWrap: 'wrap'
+    }
+  });
+
+  exports.default = _default;
+},683,[15],"styles.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -102863,7 +102949,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "add",
     "type": "png"
   });
-},682,[83],"add.png");
+},684,[83],"add.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -102880,7 +102966,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
 
   exports.addProduct = addProduct;
-},683,[],"products.js");
+},685,[],"products.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -102896,7 +102982,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var _default = (0, _redux.createStore)(_reducers.default);
 
   exports.default = _default;
-},684,[535,685],"store.js");
+},686,[535,687],"store.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -102917,7 +103003,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   });
 
   exports.default = _default;
-},685,[535,686,687],"index.js");
+},687,[535,688,689],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -102976,7 +103062,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   });
 
   exports.default = _default;
-},686,[535,683],"products.js");
+},688,[535,685],"products.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -102992,13 +103078,15 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var initialState = {
-    msrp: '',
-    discount: '',
-    weight: '',
-    shippingRate: '',
-    tax: '',
-    currency: '',
-    profitRate: ''
+    msrp: 0,
+    discount: 0,
+    weight: 0,
+    shippingRate: 0,
+    tax: 0,
+    currency: 0,
+    profitRate: 0,
+    price: 0,
+    profit: 0
   };
 
   var _default = calculatorReducer = function calculatorReducer() {
@@ -103014,7 +103102,9 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           shippingRate: action.shippingRate,
           tax: action.tax,
           currency: action.currency,
-          profitRate: action.profitRate
+          profitRate: action.profitRate,
+          price: action.price,
+          profit: action.profit
         });
 
       default:
@@ -103023,7 +103113,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
 
   exports.default = _default;
-},687,[535,623],"calculator.js");
+},689,[535,623],"calculator.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -103163,7 +103253,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = OrderNew;
   exports.default = _default2;
-},688,[2,88,15,12,547],"OrderNew.js");
+},690,[2,88,15,12,547],"OrderNew.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -103303,7 +103393,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = OrderUnpaid;
   exports.default = _default2;
-},689,[2,88,15,12,547],"OrderUnpaid.js");
+},691,[2,88,15,12,547],"OrderUnpaid.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -103443,7 +103533,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = OrderPaid;
   exports.default = _default2;
-},690,[2,88,15,12,547],"OrderPaid.js");
+},692,[2,88,15,12,547],"OrderPaid.js");
 require(264);
 require(0);
 //# sourceMappingURL=index.map

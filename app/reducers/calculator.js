@@ -2,13 +2,15 @@ import {combineReducers} from 'redux';
 import {UPDATE_CALCULATOR} from '../actions/calculator';
 
 const initialState = {
-  msrp: '',
-  discount: '',
-  weight: '',
-  shippingRate: '',
-  tax: '',
-  currency: '',
-  profitRate: ''
+  msrp: 0,
+  discount: 0,
+  weight: 0,
+  shippingRate: 0,
+  tax: 0,
+  currency: 0,
+  profitRate: 0,
+  price: 0,
+  profit: 0
 }
 
 export default calculatorReducer = (state = initialState, action) => {
@@ -22,7 +24,9 @@ export default calculatorReducer = (state = initialState, action) => {
         shippingRate: action.shippingRate,
         tax: action.tax,
         currency: action.currency,
-        profitRate: action.profitRate
+        profitRate: action.profitRate,
+        price: action.price,
+        profit: action.profit,
       };
     default:
       return state;

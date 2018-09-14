@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Provider } from "react-redux";
 
 import { iconsMap } from '../assets/icons';
-import ImageGridView from '../components/ImageGridView';
+import ImageGridView from "../components/ImageGridView";
 import InputWithButton from '../components/TextInput';
 import {addProduct} from '../actions/products';
 import store from "../config/store";
