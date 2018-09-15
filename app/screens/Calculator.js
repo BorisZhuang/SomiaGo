@@ -25,12 +25,12 @@ class Calculator extends Component {
     };
   }
 
-  handleSubmit = () => {
+  handleSubmit() {
     Navigation.pop(this.props.componentId);
   }
 
   render() {
-    return (<CalculatorForm/>);
+    return (<CalculatorForm onSubmit={() => this.handleSubmit()}/>);
   }
 }
 

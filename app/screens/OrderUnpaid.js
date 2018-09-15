@@ -7,12 +7,6 @@ class OrderUnpaid extends Component {
     return {
       topBar: {
         visible: true,
-        leftButtons: [
-          {
-            id: 'leftbutton',
-            icon: require('../Images/one.png'),
-          }
-        ],
       }
     };
   }

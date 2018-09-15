@@ -22,15 +22,31 @@ class CalculatorForm extends Component {
     };
   }
 
-  getCurrentState() {
-    return {
-      msrp: parseFloat(this.state.msrp),
-      discount: parseFloat(this.state.discount),
-      tax: parseFloat(this.state.tax),
-      profitRate: parseFloat(this.state.profitRate),
-      currency: parseFloat(this.state.currency),
-      weight: parseFloat(this.state.weight),
-      shippingRate: parseFloat(this.state.shippingRate),
+  handleTextInputChange(text, name) {
+    let num = parseFloat(text);
+    if (isNaN(num)) num = 0;
+    switch(name) {
+      case 'msrp':
+        this.setState({ msrp: num });
+        break;
+      case 'discount':
+        this.setState({ discount: num });
+        break;
+      case 'weight':
+        this.setState({ weight: num });
+        break;
+      case 'shippingRate':
+        this.setState({ shippingRate: num });
+        break;
+      case 'tax':
+        this.setState({ tax: num });
+        break;
+      case 'currency':
+        this.setState({ currency: num });
+        break;
+      case 'profitRate':
+        this.setState({ profitRate: num });
+        break;
     }
   }
 
@@ -47,6 +63,18 @@ class CalculatorForm extends Component {
   calculate() {
     this.calculatePrice();
     this.calculateProfit();
+  }
+
+  getCurrentState() {
+    return {
+      msrp: parseFloat(this.state.msrp),
+      discount: parseFloat(this.state.discount),
+      tax: parseFloat(this.state.tax),
+      profitRate: parseFloat(this.state.profitRate),
+      currency: parseFloat(this.state.currency),
+      weight: parseFloat(this.state.weight),
+      shippingRate: parseFloat(this.state.shippingRate),
+    }
   }
 
   calculatePrice() {
@@ -66,29 +94,13 @@ class CalculatorForm extends Component {
     this.setState({profit: Math.round(profit * currency)});
   }
 
-  handleSubmit = (e) => {
-    this.props.updateCalculator(
-      this.state.msrp, this.state.discount,
-      this.state.weight, this.state.shippingRate,
-      this.state.tax, this.state.currency,
-      this.state.profitRate, this.state.price,
-      this.state.profit);
+  handleSubmit(e) {
+    this.props.updateCalculator(this.state);
     e.preventDefault();
+    this.props.onSubmit();
   }
 
   render() {
-    const priceGroupContainerStyle = [
-      styles.groupContainer,
-      { backgroundColor: '#b0b0b0' }
-    ];
-
-    const priceInputStyle = [
-      styles.input,
-      { color : '#FFFFFF' }
-    ];
-
-    const {updateCalculator} = this.props;
-
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         {/* MSRP section */}
@@ -97,7 +109,7 @@ class CalculatorForm extends Component {
             label="MSRP (USD)"
             labelStyle={styles.labelText}
             value={`${this.state.msrp}`}
-            onChangeText={(text) => this.setState({ msrp: parseFloat(text) })}
+            onChangeText={(text) => this.handleTextInputChange(text, 'msrp')}
             onBlur={() => this.calculate()}
             placeholder='0'
             position='top' />
@@ -105,7 +117,7 @@ class CalculatorForm extends Component {
             label="Discount (%)"
             labelStyle={styles.labelText}
             value={`${this.state.discount}`}
-            onChangeText={(text) => this.setState({ discount: parseFloat(text) })}
+            onChangeText={(text) => this.handleTextInputChange(text, 'discount')}
             onBlur={() => this.calculate()}
             placeholder='0'
             position='bottom' />
@@ -116,7 +128,7 @@ class CalculatorForm extends Component {
               label="Weight (pound)"
               labelStyle={styles.labelText}
               value={`${this.state.weight}`}
-              onChangeText={(text) => this.setState({ weight: parseFloat(text) })}
+              onChangeText={(text) => this.handleTextInputChange(text, 'weight')}
               onBlur={() => this.calculate()}
               placeholder='0'
               position='top' />
@@ -124,7 +136,7 @@ class CalculatorForm extends Component {
               label="Shipping (per pound)"
               labelStyle={styles.labelText}
               value={`${this.state.shippingRate}`}
-              onChangeText={(text) => this.setState({ shippingRate: parseFloat(text) })}
+              onChangeText={(text) => this.handleTextInputChange(text, 'shippingRate')}
               onBlur={() => this.calculate()}
               placeholder='0'
               position='bottom' />
@@ -135,7 +147,7 @@ class CalculatorForm extends Component {
             label="Tax (%)"
             labelStyle={styles.labelText}
             value={`${this.state.tax}`}
-            onChangeText={(text) => this.setState({ tax: parseFloat(text) })}
+            onChangeText={(text) => this.handleTextInputChange(text, 'tax')}
             onBlur={() => this.calculate()}
             placeholder='0'
             position='top' />
@@ -143,7 +155,7 @@ class CalculatorForm extends Component {
             label="Currency"
             labelStyle={styles.labelText}
             value={`${this.state.currency}`}
-            onChangeText={(text) => this.setState({ currency: parseFloat(text) })}
+            onChangeText={(text) => this.handleTextInputChange(text, 'currency')}
             onBlur={() => this.calculate()}
             placeholder='0'
             position='middle' />
@@ -151,7 +163,7 @@ class CalculatorForm extends Component {
             label='Profit (%)'
             labelStyle={styles.labelText}
             value={`${this.state.profitRate}`}
-            onChangeText={(text) => this.setState({ profitRate: parseFloat(text) })}
+            onChangeText={(text) => this.handleTextInputChange(text, 'profitRate')}
             onBlur={() => this.calculate()}
             placeholder='0'
             onPress={[() => this.onPlusPressed(), () => this.onMinusPressed()]}
@@ -190,10 +202,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  updateCalculator: (msrp, discount, weight, shippingRate,
-    tax, currency, profitRate, price, profit) => {dispatch(updateCalculator(
-      msrp, discount, weight, shippingRate,
-      tax, currency, profitRate, price, profit));}
+  updateCalculator: (values) => {dispatch(updateCalculator(values));}
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalculatorForm);

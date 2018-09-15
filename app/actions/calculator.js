@@ -7,8 +7,8 @@ export const CHANGE_CURRENCY = "CHANGE_CURRENCY";
 export const CHANGE_PROFIT_RATE = "CHANGE_PROFIT_RATE";
 export const UPDATE_CALCULATOR = "UPDATE_CALCULATOR";
 
-export const updateCalculator = (msrp, discount, weight,
-  shippingRate, tax, currency, profitRate, price, profit) => ({
+export const updateCalculator = ({msrp, discount, weight,
+  shippingRate, tax, currency, profitRate, price, profit}) => ({
     type: UPDATE_CALCULATOR,
     msrp: parseFloat(msrp),
     discount: parseFloat(discount),

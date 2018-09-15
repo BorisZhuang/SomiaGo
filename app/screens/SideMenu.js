@@ -192,7 +192,7 @@ export const setRootToOrder = () => {
                       selectedTextColor: 'red',
                       selectedIconColor: 'red',
                       text: 'Tab 1',
-                      icon: require('../Images/one.png'),
+                      icon: iconsMap['share-square-o'],
                     }
                   }
                 }
@@ -214,7 +214,7 @@ export const setRootToOrder = () => {
                       fontFamily: 'HelveticaNeue-Italic',
                       fontSize: 13,
                       text: 'Tab 2',
-                      icon: require('../Images/two.png'),
+                      icon: iconsMap['share-square-o'],
                     }
                   }
                 }
@@ -236,7 +236,7 @@ export const setRootToOrder = () => {
                       fontFamily: 'HelveticaNeue-Italic',
                       fontSize: 13,
                       text: 'Tab 2',
-                      icon: require('../Images/two.png'),
+                      icon: iconsMap['share-square-o'],
                     }
                   }
                 }

@@ -44,17 +44,9 @@ class ProductNew extends Component {
     super(props);
     this.state = {
       images: [],
-      price: 0,
-      description: 'Please add description here.'
+      description: ''
     };
     Navigation.events().bindComponent(this);
-  }
-
-  onPickDone = (images) => {
-    this.setState(state => {
-      state.images = images;
-      return state;
-    });
   }
 
   onCalculatorPressed = () => {
@@ -70,11 +62,11 @@ class ProductNew extends Component {
     const newProduct = {
       productId: id,
       images: this.state.images,
-      price: this.state.price,
+      price: this.props.price,
       description: this.state.description
     };
 
-    this.props.dispatch(addProduct(newProduct));
+    this.props.addProduct(newProduct);
     Navigation.pop(this.props.componentId);
   }
 
@@ -82,36 +74,20 @@ class ProductNew extends Component {
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView behavior="padding">
-          <ImageGridView onPickDone={this.onPickDone}/>
+          <ImageGridView onPickDone={(images) => this.setState({images: images})}/>
           <InputWithButton
             label="CNY"
-            value={this.state.price.toString()}
-            onChangeText={
-              text => {
-                this.setState(state => {
-                  state.price = text;
-                  return state;
-                });
-                console.log(this.state.price);
-              }
-            }
+            value={`${this.props.price}`}
+            editable={false}
             placeholder={'0'}
             onPress={[this.onCalculatorPressed]}
             iconNames={["ios-calculator"]} />
           <TextInput
             style={styles.descriptionInput}
             underlineColorAndroid="transparent"
-            placeholder= {this.state.description}
-            value = ""
-            onChangeText={
-              text => {
-                this.setState(state => {
-                  state.description = text;
-                  return state;
-                });
-                console.log(this.state.description);
-              }
-            }/>
+            placeholder= 'Please add description here.'
+            value = {`${this.state.description}`}
+            onChangeText={(text) => this.setState({description: text})} />
         </KeyboardAvoidingView>
       </View>
     );
@@ -133,4 +109,15 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect()(ProductNew);
+const mapStateToProps = state => {
+  let {price} = state.calculator;
+  return {
+    price
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  addProduct: (newProduct) => {dispatch(addProduct(newProduct));}
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductNew);
