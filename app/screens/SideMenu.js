@@ -62,7 +62,7 @@ export const setRootToProduct = () => {
                   children: [
                     {
                       component: {
-                        name: 'navigation.somiaGo.ProductToPub',
+                        name: 'navigation.somiaGo.ProductNew',
                         passProps: {
                           text: 'ProductToPub'
                         },
@@ -77,7 +77,7 @@ export const setRootToProduct = () => {
                       iconColor: 'grey',
                       selectedTextColor: 'blue',
                       selectedIconColor: 'blue',
-                      text: 'To Publish',
+                      text: 'New',
                       icon: iconsMap['burst-new'],
                     }
                   }

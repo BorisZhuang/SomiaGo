@@ -89713,7 +89713,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
                 stack: {
                   children: [{
                     component: {
-                      name: 'navigation.somiaGo.ProductToPub',
+                      name: 'navigation.somiaGo.ProductNew',
                       passProps: {
                         text: 'ProductToPub'
                       }

@@ -1,123 +1,109 @@
 import React, { Component } from 'react';
-import {View, Button, Text, TextInput, StyleSheet, ScrollView, Image, KeyboardAvoidingView} from 'react-native';
+import {Card, FlatList, View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import ActionButton from 'react-native-action-button';
 import {Navigation} from 'react-native-navigation';
 import { connect } from "react-redux";
-import { Provider } from "react-redux";
 
-import { iconsMap } from '../assets/icons';
-import ImageGridView from "../components/ImageGridView";
-import InputWithButton from '../components/TextInput';
-import {addProduct} from '../actions/products';
-import store from "../config/store";
+import { data } from "../data";
+import ProductItem from '../components/ProductItem';
+import ProductBase from './ProductBase';
 
-class ProductNew extends Component {
-  static get options() {
-    return {
-      topBar: {
-        visible: true,
-        backButton: { // android
-          color: "rgba(0, 0, 0, 0.87)"
-        },
-        buttonColor: "rgba(0, 0, 0, 0.87)", // iOS
-        title: {
-          text: 'New Product',
-          fontSize: 18,
-          fontFamily: 'Helvetica',
-        },
-        rightButtons: [
-          {
-            id: 'productAddConfirmBtn',
-            //text: 'Add Product',
-            color: 'green',
-            icon: iconsMap['md-checkmark'],
-          }
-        ]
-      },
-      bottomTabs: {
-        visible: false,
-        animate: false, // Controls whether BottomTabs visibility changes should be animated
-      }
-    };
-  }
-
+class ProductToPub extends ProductBase {
   constructor(props) {
     super(props);
-    this.state = {
-      images: [],
-      description: ''
-    };
+    //this.data = data.getArticles('post');
     Navigation.events().bindComponent(this);
   }
 
-  onCalculatorPressed = () => {
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: 'navigation.somiaGo.Calculator',
-      }
-    })
+  navigationButtonPressed({ buttonId }) {
+    this.showSideMenu('left');
   }
 
-  navigationButtonPressed({ buttonId }) {
-    const id = Date.now() + Math.random().toString().slice(2);
-    const newProduct = {
-      productId: id,
-      images: this.state.images,
-      price: this.props.price,
-      description: this.state.description
-    };
+  showSideMenu(side) {
+    Navigation.mergeOptions(this.props.componentId, {
+      sideMenu: {
+        [side]: {
+          visible: true
+        }
+      }
+    });
+  }
 
-    this.props.addProduct(newProduct);
-    Navigation.pop(this.props.componentId);
+  renderItem = ({item}) => (
+    <ProductItem
+      text={item.description}
+      photo={item.images[0].path}
+      onPress={() => Navigation.push(this.props.componentId, {
+        component: {
+          name: 'navigation.somiaGo.ProductView',
+          passProps: {
+            id: item.productId
+          },
+          options: {
+            topBar: {
+              title: {
+                text: 'Product View'
+              }
+            }
+          }
+        }
+      })}
+    />
+  );
+
+  keyExtractor(post, index) {
+    return post.productId;
+  }
+
+  launchProductAddScreen() {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'navigation.somiaGo.ProductAdd',
+      }
+    })
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <KeyboardAvoidingView behavior="padding">
-          <ImageGridView onPickDone={(images) => this.setState({images: images})}/>
-          <InputWithButton
-            label="CNY"
-            value={`${this.props.price}`}
-            editable={false}
-            placeholder={'0'}
-            onPress={[this.onCalculatorPressed]}
-            iconNames={["ios-calculator"]} />
-          <TextInput
-            style={styles.descriptionInput}
-            underlineColorAndroid="transparent"
-            placeholder= 'Please add description here.'
-            value = {`${this.state.description}`}
-            onChangeText={(text) => this.setState({description: text})} />
-        </KeyboardAvoidingView>
+        <FlatList
+          data={this.props.data}
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}/>
+        <ActionButton
+          offsetX={20}
+          offsetY={65}
+          buttonColor="rgba(231,76,60,1)"
+          onPress={() => this.launchProductAddScreen()} />
       </View>
     );
   }
 }
-const BORDER_RADIUS = 4;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    paddingVertical: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    //paddingTop: ( Platform.OS === 'ios' ) ? 20 : 0,
+    backgroundColor: "white",
+    paddingVertical: 8,
     paddingHorizontal: 8
-  },
-  descriptionInput: {
-    fontSize: 20,
   }
 })
 
 const mapStateToProps = state => {
-  let {price} = state.calculator;
+  const productsById = state.products.byId;
+  const productIds = state.products.allIds;
+  const products = [];
+  if (productIds !== undefined && productIds.length > 0) {
+    productIds.forEach(id => {
+      products.push(productsById[id])
+    });
+  }
   return {
-    price
-  };
+    data: products,
+  }
 };
 
-const mapDispatchToProps = dispatch => ({
-  addProduct: (newProduct) => {dispatch(addProduct(newProduct));}
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductNew);
+export default connect(mapStateToProps)(ProductToPub);

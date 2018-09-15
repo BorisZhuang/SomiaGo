@@ -55,6 +55,7 @@ const InputWithButton = props => {
       {iconNames ? iconNamesArray.map((iconName, index)=>(
         <TouchableHighlight
           //underlayColor={underlayColor}
+          key={iconName}
           style={styles.iconContainer}
           onPress={onPressArray[index]}>
           <Icon name={iconName} style={styles.icon} />
