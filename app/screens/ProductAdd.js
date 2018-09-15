@@ -10,7 +10,7 @@ import InputWithButton from '../components/TextInput';
 import {addProduct} from '../actions/products';
 import store from "../config/store";
 
-class ProductNew extends Component {
+class ProductAdd extends Component {
   static get options() {
     return {
       topBar: {
@@ -120,4 +120,4 @@ const mapDispatchToProps = dispatch => ({
   addProduct: (newProduct) => {dispatch(addProduct(newProduct));}
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductNew);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductAdd);

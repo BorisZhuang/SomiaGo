@@ -64,7 +64,7 @@ export const setRootToProduct = () => {
                       component: {
                         name: 'navigation.somiaGo.ProductNew',
                         passProps: {
-                          text: 'ProductToPub'
+                          text: 'ProductNew'
                         },
                       }
                     }

@@ -8,7 +8,7 @@ import { data } from "../data";
 import ProductItem from '../components/ProductItem';
 import ProductBase from './ProductBase';
 
-class ProductToPub extends ProductBase {
+class ProductNew extends ProductBase {
   constructor(props) {
     super(props);
     //this.data = data.getArticles('post');
@@ -106,4 +106,4 @@ const mapStateToProps = state => {
   }
 };
 
-export default connect(mapStateToProps)(ProductToPub);
+export default connect(mapStateToProps)(ProductNew);
