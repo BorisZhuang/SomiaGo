@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
-import {Card, FlatList, View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {FlatList, View, StyleSheet} from 'react-native';
 import ActionButton from 'react-native-action-button';
 import {Navigation} from 'react-native-navigation';
 import { connect } from "react-redux";
-
-import { data } from "../data";
-import ProductItem from '../components/ProductItem';
+import {ProductList} from '../components/Product';
 import ProductBase from './ProductBase';
 
 class ProductNew extends ProductBase {
   constructor(props) {
     super(props);
-    //this.data = data.getArticles('post');
     Navigation.events().bindComponent(this);
   }
 
   navigationButtonPressed({ buttonId }) {
-    this.showSideMenu('left');
+    this._showSideMenu('left');
   }
 
-  showSideMenu(side) {
+  _showSideMenu(side) {
     Navigation.mergeOptions(this.props.componentId, {
       sideMenu: {
         [side]: {
@@ -29,33 +26,18 @@ class ProductNew extends ProductBase {
     });
   }
 
-  renderItem = ({item}) => (
-    <ProductItem
-      text={item.description}
-      photo={item.images[0].path}
-      onPress={() => Navigation.push(this.props.componentId, {
-        component: {
-          name: 'navigation.somiaGo.ProductView',
-          passProps: {
-            id: item.productId
-          },
-          options: {
-            topBar: {
-              title: {
-                text: 'Product View'
-              }
-            }
-          }
+  _onPressItem(id) {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'navigation.somiaGo.ProductView',
+        passProps: {
+          id
         }
-      })}
-    />
-  );
+      }
+    })
+  };
 
-  keyExtractor(post, index) {
-    return post.productId;
-  }
-
-  launchProductAddScreen() {
+  _launchProductAddScreen() {
     Navigation.push(this.props.componentId, {
       component: {
         name: 'navigation.somiaGo.ProductAdd',
@@ -66,15 +48,14 @@ class ProductNew extends ProductBase {
   render() {
     return (
       <View style={styles.container}>
-        <FlatList
+        <ProductList
           data={this.props.data}
-          renderItem={this.renderItem}
-          keyExtractor={this.keyExtractor}/>
+          onPressItem={(id) => this._onPressItem(id)}/>
         <ActionButton
           offsetX={20}
           offsetY={65}
           buttonColor="rgba(231,76,60,1)"
-          onPress={() => this.launchProductAddScreen()} />
+          onPress={() => this._launchProductAddScreen()} />
       </View>
     );
   }
@@ -83,13 +64,13 @@ class ProductNew extends ProductBase {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'flex-start',
+    //alignItems: 'center',
     //paddingTop: ( Platform.OS === 'ios' ) ? 20 : 0,
     backgroundColor: "white",
     paddingVertical: 8,
     paddingHorizontal: 8
-  }
+  },
 })
 
 const mapStateToProps = state => {
