@@ -1635,7 +1635,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _icons = _$$_REQUIRE(_dependencyMap[3], "./app/assets/icons");
 
-  var _SideMenu = _$$_REQUIRE(_dependencyMap[4], "./app/screens/SideMenu");
+  var _ProductBase = _$$_REQUIRE(_dependencyMap[4], "./app/screens/ProductBase");
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1657,9 +1657,9 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       }
     });
 
-    _reactNativeNavigation.Navigation.events().registerAppLaunchedListener(_SideMenu.setRootToProduct);
+    _reactNativeNavigation.Navigation.events().registerAppLaunchedListener(_ProductBase.setRootToProduct);
   });
-},0,[1,12,686,548,547],"index.js");
+},0,[1,12,688,548,603],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -1747,7 +1747,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   ;
-},1,[2,12,525,546,547,603,623,683,684,685,731,742,743,744,738],"index.js");
+},1,[2,12,525,546,547,604,624,685,686,687,733,744,745,746,740],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -89553,7 +89553,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.default = exports.setRootToOrder = exports.setRootToProduct = void 0;
+  exports.default = exports.setRootToOrder = void 0;
 
   var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[0], "react"));
 
@@ -89564,6 +89564,8 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var _reactNativeNavigation = _$$_REQUIRE(_dependencyMap[3], "react-native-navigation");
 
   var _icons = _$$_REQUIRE(_dependencyMap[4], "../assets/icons");
+
+  var _ProductBase = _$$_REQUIRE(_dependencyMap[5], "./ProductBase");
 
   var _jsxFileName = "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/screens/SideMenu.js";
 
@@ -89620,31 +89622,31 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           style: styles.container,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 22
+            lineNumber: 23
           }
         }, _react.default.createElement(_reactNative.TouchableHighlight, {
-          onPress: setRootToProduct,
+          onPress: _ProductBase.setRootToProduct,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 23
+            lineNumber: 24
           }
         }, _react.default.createElement(_reactNative.Text, {
           style: styles.welcome,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 24
+            lineNumber: 25
           }
         }, "Product")), _react.default.createElement(_reactNative.TouchableHighlight, {
           onPress: setRootToOrder,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 26
+            lineNumber: 27
           }
         }, _react.default.createElement(_reactNative.Text, {
           style: styles.welcome,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 27
+            lineNumber: 28
           }
         }, "Order")));
       }
@@ -89678,111 +89680,6 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       alignItems: 'center'
     }
   });
-
-  var setRootToProduct = function setRootToProduct() {
-    _reactNativeNavigation.Navigation.setRoot({
-      root: {
-        sideMenu: {
-          left: {
-            component: {
-              name: 'navigation.somiaGo.SideMenu',
-              passProps: {
-                text: 'left side menu screen'
-              }
-            }
-          },
-          center: {
-            bottomTabs: {
-              children: [{
-                stack: {
-                  children: [{
-                    component: {
-                      name: 'navigation.somiaGo.ProductNew',
-                      passProps: {
-                        text: 'ProductNew'
-                      }
-                    }
-                  }],
-                  options: {
-                    bottomTab: {
-                      fontFamily: 'HelveticaNeue',
-                      fontSize: 12,
-                      textColor: 'grey',
-                      iconColor: 'grey',
-                      selectedTextColor: 'blue',
-                      selectedIconColor: 'blue',
-                      text: 'New',
-                      icon: _icons.iconsMap['burst-new']
-                    }
-                  }
-                }
-              }, {
-                stack: {
-                  children: [{
-                    component: {
-                      name: 'navigation.somiaGo.ProductPub',
-                      passProps: {
-                        text: 'ProductPub'
-                      }
-                    }
-                  }],
-                  options: {
-                    bottomTab: {
-                      fontFamily: 'HelveticaNeue',
-                      fontSize: 12,
-                      textColor: 'grey',
-                      iconColor: 'grey',
-                      selectedTextColor: 'blue',
-                      selectedIconColor: 'blue',
-                      text: 'Published',
-                      icon: _icons.iconsMap['share-square-o']
-                    }
-                  }
-                }
-              }, {
-                stack: {
-                  children: [{
-                    component: {
-                      name: 'navigation.somiaGo.ProductFavo',
-                      passProps: {
-                        text: 'ProductFavo'
-                      }
-                    }
-                  }],
-                  options: {
-                    bottomTab: {
-                      fontFamily: 'HelveticaNeue',
-                      fontSize: 12,
-                      textColor: 'grey',
-                      iconColor: 'grey',
-                      selectedTextColor: 'red',
-                      selectedIconColor: 'red',
-                      text: 'Favorite',
-                      icon: _icons.iconsMap['favorite']
-                    }
-                  }
-                }
-              }],
-              options: {
-                bottomTabs: {
-                  visible: true,
-                  animate: true,
-                  currentTabIndex: 0,
-                  drawBehind: true,
-                  backgroundColor: 'white',
-                  barStyle: 'default' | 'black',
-                  translucent: true,
-                  hideShadow: false
-                }
-              }
-            }
-          }
-        }
-      }
-    });
-  };
-
-  exports.setRootToProduct = setRootToProduct;
 
   var setRootToOrder = function setRootToOrder() {
     _reactNativeNavigation.Navigation.setRoot({
@@ -89882,7 +89779,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.setRootToOrder = setRootToOrder;
   var _default2 = SideMenu;
   exports.default = _default2;
-},547,[2,88,15,12,548],"SideMenu.js");
+},547,[2,88,15,12,548,603],"SideMenu.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -94318,6 +94215,172 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.default = exports.setRootToProduct = void 0;
+
+  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[0], "react"));
+
+  var _reactNativeNavigation = _$$_REQUIRE(_dependencyMap[1], "react-native-navigation");
+
+  var _icons = _$$_REQUIRE(_dependencyMap[2], "../assets/icons");
+
+  function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+
+  var ProductBase = function (_Component) {
+    function ProductBase() {
+      _classCallCheck(this, ProductBase);
+
+      return _possibleConstructorReturn(this, _getPrototypeOf(ProductBase).apply(this, arguments));
+    }
+
+    _createClass(ProductBase, null, [{
+      key: "options",
+      get: function get() {
+        return {
+          topBar: {
+            visible: true,
+            leftButtons: [{
+              id: 'sideMenuBtn',
+              icon: _icons.iconsMap['bars'],
+              color: 'blue'
+            }]
+          }
+        };
+      }
+    }]);
+
+    _inherits(ProductBase, _Component);
+
+    return ProductBase;
+  }(_react.Component);
+
+  var setRootToProduct = function setRootToProduct() {
+    _reactNativeNavigation.Navigation.setRoot({
+      root: {
+        sideMenu: {
+          left: {
+            component: {
+              name: 'navigation.somiaGo.SideMenu',
+              passProps: {
+                text: 'left side menu screen'
+              }
+            }
+          },
+          center: {
+            bottomTabs: {
+              children: [{
+                stack: {
+                  children: [{
+                    component: {
+                      name: 'navigation.somiaGo.ProductNew',
+                      passProps: {
+                        text: 'ProductNew'
+                      }
+                    }
+                  }],
+                  options: {
+                    bottomTab: {
+                      visible: true,
+                      fontFamily: 'HelveticaNeue',
+                      fontSize: 12,
+                      textColor: 'grey',
+                      iconColor: 'grey',
+                      selectedTextColor: 'blue',
+                      selectedIconColor: 'blue',
+                      text: 'New',
+                      icon: _icons.iconsMap['burst-new']
+                    }
+                  }
+                }
+              }, {
+                stack: {
+                  children: [{
+                    component: {
+                      name: 'navigation.somiaGo.ProductPub',
+                      passProps: {
+                        text: 'ProductPub'
+                      }
+                    }
+                  }],
+                  options: {
+                    bottomTab: {
+                      fontFamily: 'HelveticaNeue',
+                      fontSize: 12,
+                      textColor: 'grey',
+                      iconColor: 'grey',
+                      selectedTextColor: 'blue',
+                      selectedIconColor: 'blue',
+                      text: 'Published',
+                      icon: _icons.iconsMap['share-square-o']
+                    }
+                  }
+                }
+              }, {
+                stack: {
+                  children: [{
+                    component: {
+                      name: 'navigation.somiaGo.ProductFavo',
+                      passProps: {
+                        text: 'ProductFavo'
+                      }
+                    }
+                  }],
+                  options: {
+                    bottomTab: {
+                      fontFamily: 'HelveticaNeue',
+                      fontSize: 12,
+                      textColor: 'grey',
+                      iconColor: 'grey',
+                      selectedTextColor: 'red',
+                      selectedIconColor: 'red',
+                      text: 'Favorite',
+                      icon: _icons.iconsMap['favorite']
+                    }
+                  }
+                }
+              }],
+              options: {
+                bottomTabs: {
+                  visible: true,
+                  animate: true,
+                  currentTabIndex: 0,
+                  drawBehind: false,
+                  backgroundColor: 'white',
+                  barStyle: 'default' | 'black',
+                  translucent: true,
+                  hideShadow: false
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+  };
+
+  exports.setRootToProduct = setRootToProduct;
+  var _default = ProductBase;
+  exports.default = _default;
+},603,[2,12,548],"ProductBase.js");
+__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
   exports.default = void 0;
 
   var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[0], "react"));
@@ -94430,7 +94493,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Calculator = _wrapComponent("Calculator")(Calculator);
   var _default2 = Calculator;
   exports.default = _default2;
-},603,[2,88,15,12,604],"Calculator.js");
+},604,[2,88,15,12,605],"Calculator.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -94443,7 +94506,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = _CalculatorForm.default;
   exports.default = _default;
-},604,[605],"index.js");
+},605,[606],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -94879,7 +94942,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var _default2 = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(CalculatorForm);
 
   exports.default = _default2;
-},605,[2,88,15,525,606,618,621,622],"CalculatorForm.js");
+},606,[2,88,15,525,607,619,622,623],"CalculatorForm.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -94888,7 +94951,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   } else {
     module.exports = _$$_REQUIRE(_dependencyMap[1], './formik.cjs.development.js');
   }
-},606,[607,617],"index.js");
+},607,[608,618],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -96116,7 +96179,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.FormikProvider = FormikProvider;
   exports.FormikConsumer = FormikConsumer;
   exports.connect = connect;
-},607,[608,2,514,609,612,613,614,615,616],"formik.cjs.production.js");
+},608,[609,2,514,610,613,614,615,616,617],"formik.cjs.production.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var __extends;
 
@@ -96583,7 +96646,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     exporter("__importStar", __importStar);
     exporter("__importDefault", __importDefault);
   });
-},608,[],"tslib.js");
+},609,[],"tslib.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -96605,7 +96668,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   exports.default = _react2.default.createContext || _implementation2.default;
   module.exports = exports['default'];
-},609,[2,610],"index.js");
+},610,[2,611],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -96828,7 +96891,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   exports.default = createReactContext;
   module.exports = exports['default'];
-},610,[2,59,611,9],"implementation.js");
+},611,[2,59,612,9],"implementation.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -96837,7 +96900,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = function () {
     return global[key] = (global[key] || 0) + 1;
   };
-},611,[],"index.js");
+},612,[],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var LARGE_ARRAY_SIZE = 200;
   var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -97638,7 +97701,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   module.exports = cloneDeep;
-},612,[],"index.js");
+},613,[],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var FUNC_ERROR_TEXT = 'Expected a function';
   var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -98020,7 +98083,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   module.exports = toPath;
-},613,[],"index.js");
+},614,[],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -98094,7 +98157,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       throw error;
     }
   };
-},614,[],"index.js");
+},615,[],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -98135,7 +98198,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   module.exports = warning;
-},615,[],"browser.js");
+},616,[],"browser.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.deepmerge = factory();
@@ -98225,7 +98288,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     var deepmerge_1 = deepmerge;
     return deepmerge_1;
   });
-},616,[],"umd.js");
+},617,[],"umd.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   'use strict';
 
@@ -99465,7 +99528,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.FormikProvider = FormikProvider;
   exports.FormikConsumer = FormikConsumer;
   exports.connect = connect;
-},617,[608,2,514,609,612,613,614,615,616],"formik.cjs.development.js");
+},618,[609,2,514,610,613,614,615,616,617],"formik.cjs.development.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -99478,7 +99541,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = _InputWithButton.default;
   exports.default = _default;
-},618,[619],"index.js");
+},619,[620],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -99607,7 +99670,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = InputWithButton;
   exports.default = _default;
-},619,[2,15,620,548,549],"InputWithButton.js");
+},620,[2,15,621,548,549],"InputWithButton.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -99708,7 +99771,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   });
 
   exports.default = _default;
-},620,[15],"styles.js");
+},621,[15],"styles.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -99756,7 +99819,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
 
   exports.updateCalculator = updateCalculator;
-},621,[],"calculator.js");
+},622,[],"calculator.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -99788,7 +99851,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   });
 
   exports.default = _default;
-},622,[15],"styles.js");
+},623,[15],"styles.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -99805,9 +99868,17 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _reactRedux = _$$_REQUIRE(_dependencyMap[4], "react-redux");
 
-  var _Product = _$$_REQUIRE(_dependencyMap[5], "../components/Product");
+  var _reactNativeBottomToolbar = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "react-native-bottom-toolbar"));
 
-  var _ProductBase2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "./ProductBase"));
+  var _Ionicons = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "react-native-vector-icons/Ionicons"));
+
+  var _MaterialIcons = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "react-native-vector-icons/MaterialIcons"));
+
+  var _FontAwesome = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "react-native-vector-icons/FontAwesome"));
+
+  var _Product = _$$_REQUIRE(_dependencyMap[9], "../components/Product");
+
+  var _ProductBase2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[10], "./ProductBase"));
 
   var _jsxFileName = "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/screens/ProductNew.js";
 
@@ -99840,6 +99911,9 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       _classCallCheck(this, ProductNew);
 
       _this = _possibleConstructorReturn(this, _getPrototypeOf(ProductNew).call(this, props));
+      _this.state = {
+        toolbar: false
+      };
 
       _reactNativeNavigation.Navigation.events().bindComponent(_assertThisInitialized(_assertThisInitialized(_this)));
 
@@ -99875,6 +99949,13 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
         });
       }
     }, {
+      key: "_onPressItemImg",
+      value: function _onPressItemImg(id) {
+        this.setState({
+          toolbar: !this.state.toolbar
+        });
+      }
+    }, {
       key: "_launchProductAddScreen",
       value: function _launchProductAddScreen() {
         _reactNativeNavigation.Navigation.push(this.props.componentId, {
@@ -99892,16 +99973,19 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           style: styles.container,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 50
+            lineNumber: 61
           }
         }, _react.default.createElement(_Product.ProductList, {
           data: this.props.data,
           onPressItem: function onPressItem(id) {
             return _this2._onPressItem(id);
           },
+          onPressItemImg: function onPressItemImg(id) {
+            return _this2._onPressItemImg(id);
+          },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 51
+            lineNumber: 62
           }
         }), _react.default.createElement(_reactNativeActionButton.default, {
           offsetX: 20,
@@ -99912,9 +99996,73 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 54
+            lineNumber: 66
           }
-        }));
+        }), _react.default.createElement(_reactNativeBottomToolbar.default, {
+          showIf: this.state.toolbar,
+          IconComponent: _Ionicons.default,
+          color: "blue",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 71
+          }
+        }, _react.default.createElement(_reactNativeBottomToolbar.default.Action, {
+          title: "Share",
+          iconName: "md-share",
+          onPress: function onPress(index, propsOfThisAction) {
+            return console.warn(index + ' ' + JSON.stringify(propsOfThisAction));
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 75
+          }
+        }), _react.default.createElement(_reactNativeBottomToolbar.default.Action, {
+          title: "Edit",
+          IconElement: _react.default.createElement(_FontAwesome.default, {
+            name: "edit",
+            color: "blue",
+            size: 30,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 82
+            }
+          }),
+          onPress: function onPress(index, propsOfThisAction) {
+            return console.warn(index + ' ' + JSON.stringify(propsOfThisAction));
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 80
+          }
+        }), _react.default.createElement(_reactNativeBottomToolbar.default.Action, {
+          title: "Move",
+          iconName: "ios-move",
+          onPress: function onPress(index, propsOfThisAction) {
+            return console.warn(index + ' ' + JSON.stringify(propsOfThisAction));
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 85
+          }
+        }), _react.default.createElement(_reactNativeBottomToolbar.default.Action, {
+          title: "Delete",
+          IconElement: _react.default.createElement(_MaterialIcons.default, {
+            name: "delete",
+            color: "blue",
+            size: 30,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 92
+            }
+          }),
+          onPress: function onPress(index, propsOfThisAction) {
+            return console.warn(index + ' ' + JSON.stringify(propsOfThisAction));
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 90
+          }
+        })));
       }
     }]);
 
@@ -99927,9 +100075,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     container: {
       flex: 1,
       justifyContent: 'flex-start',
-      backgroundColor: "white",
-      paddingVertical: 8,
-      paddingHorizontal: 8
+      backgroundColor: "white"
     }
   });
 
@@ -99952,7 +100098,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var _default = (0, _reactRedux.connect)(mapStateToProps)(ProductNew);
 
   exports.default = _default;
-},623,[2,15,624,12,525,748,682],"ProductNew.js");
+},624,[2,15,625,12,525,628,549,599,597,629,603],"ProductNew.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -100443,7 +100589,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       backgroundColor: "transparent"
     }
   });
-},624,[2,88,59,15,625,626],"ActionButton.js");
+},625,[2,88,59,15,626,627],"ActionButton.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -100688,7 +100834,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       color: "#444"
     }
   });
-},625,[2,88,59,15,626],"ActionButtonItem.js");
+},626,[2,88,59,15,627],"ActionButtonItem.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -100740,7 +100886,334 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
     return undefined;
   }
-},626,[15],"shared.js");
+},627,[15],"shared.js");
+__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var React = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[0], "react"));
+
+  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./../react-transform-hmr/lib/index.js"));
+
+  var _propTypes = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "prop-types"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[3], "react-native");
+
+  var _class,
+      _temp,
+      _jsxFileName = "/Users/BZhuang/Documents/project/react-native/SomiaGo/node_modules/react-native-bottom-toolbar/index.js";
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
+
+  var _components = {
+    Action: {
+      displayName: "Action"
+    },
+    NestedAction: {
+      displayName: "NestedAction"
+    },
+    BottomToolbar: {
+      displayName: "BottomToolbar"
+    }
+  };
+
+  var _reactTransformHmrLibIndexJs2 = (0, _index.default)({
+    filename: "/Users/BZhuang/Documents/project/react-native/SomiaGo/node_modules/react-native-bottom-toolbar/index.js",
+    components: _components,
+    locals: [module],
+    imports: [React.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _reactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Action = function (_React$PureComponent) {
+    function Action() {
+      _classCallCheck(this, Action);
+
+      return _possibleConstructorReturn(this, _getPrototypeOf(Action).apply(this, arguments));
+    }
+
+    _createClass(Action, [{
+      key: "render",
+      value: function render() {
+        return null;
+      }
+    }]);
+
+    _inherits(Action, _React$PureComponent);
+
+    return Action;
+  }(React.PureComponent);
+
+  Action = _wrapComponent("Action")(Action);
+
+  var NestedAction = function (_React$PureComponent2) {
+    function NestedAction() {
+      _classCallCheck(this, NestedAction);
+
+      return _possibleConstructorReturn(this, _getPrototypeOf(NestedAction).apply(this, arguments));
+    }
+
+    _createClass(NestedAction, [{
+      key: "render",
+      value: function render() {
+        return null;
+      }
+    }]);
+
+    _inherits(NestedAction, _React$PureComponent2);
+
+    return NestedAction;
+  }(React.PureComponent);
+
+  NestedAction = _wrapComponent("NestedAction")(NestedAction);
+
+  var BottomToolbar = _wrapComponent("BottomToolbar")((_temp = _class = function (_React$PureComponent3) {
+    function BottomToolbar() {
+      _classCallCheck(this, BottomToolbar);
+
+      return _possibleConstructorReturn(this, _getPrototypeOf(BottomToolbar).apply(this, arguments));
+    }
+
+    _createClass(BottomToolbar, [{
+      key: "render",
+      value: function render() {
+        var _this = this;
+
+        var _this$props = this.props,
+            onPress = _this$props.onPress,
+            buttonStyle = _this$props.buttonStyle,
+            wrapperStyle = _this$props.wrapperStyle,
+            showIf = _this$props.showIf,
+            children = _this$props.children;
+        if (!showIf) return null;
+        return React.createElement(_reactNative.View, {
+          style: [styles.wrapper, wrapperStyle],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 77
+          }
+        }, React.createElement(_reactNative.View, {
+          style: styles.columnWrap,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 78
+          }
+        }, React.Children.map(children, function (child, index) {
+          if (!child) return null;
+          var disabled = isDisabled(child);
+          var childProps = child.props;
+
+          var fnc = function fnc() {
+            return showActionSheet(child, onPress);
+          };
+
+          var onActionPress = childProps.children && fnc || childProps.onPress || onPress;
+          return React.createElement(_reactNative.TouchableOpacity, {
+            disabled: disabled,
+            style: [styles.buttonDefaults, buttonStyle],
+            key: String(childProps.title),
+            onPress: function onPress() {
+              return onActionPress(index, childProps);
+            },
+            testID: childProps.testID,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 88
+            }
+          }, _this.renderTabContent(childProps, disabled));
+        })));
+      }
+    }, {
+      key: "renderTabContent",
+      value: function renderTabContent(childProps, disabled) {
+        var IconElement = childProps.IconElement;
+
+        if (IconElement) {
+          return IconElement;
+        } else if (childProps.iconName) {
+          return this.renderIcon(childProps, disabled);
+        } else {
+          return this.renderText(childProps, disabled);
+        }
+      }
+    }, {
+      key: "renderIcon",
+      value: function renderIcon(childProps, disabled) {
+        var _this$props2 = this.props,
+            RootIconComponent = _this$props2.IconComponent,
+            iconSize = _this$props2.iconSize,
+            color = _this$props2.color,
+            disabledColor = _this$props2.disabledColor;
+        var ChildIconComponent = childProps.IconComponent;
+        var RenderedIconComponent = ChildIconComponent || RootIconComponent;
+        return RenderedIconComponent ? React.createElement(RenderedIconComponent, {
+          name: childProps.iconName,
+          size: childProps.iconSize || iconSize,
+          color: disabled ? disabledColor : childProps.color || color,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 122
+          }
+        }) : null;
+      }
+    }, {
+      key: "renderText",
+      value: function renderText(childProps, disabled) {
+        var _this$props3 = this.props,
+            textStyle = _this$props3.textStyle,
+            disabledColor = _this$props3.disabledColor,
+            color = _this$props3.color;
+        return React.createElement(_reactNative.Text, {
+          style: [styles.text, {
+            color: color
+          }, textStyle, disabled && {
+            color: disabledColor
+          }],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 133
+          }
+        }, childProps.title);
+      }
+    }]);
+
+    _inherits(BottomToolbar, _React$PureComponent3);
+
+    return BottomToolbar;
+  }(React.PureComponent), _class.Action = Action, _class.NestedAction = NestedAction, _class.defaultProps = {
+    color: '#007AFF',
+    disabledColor: 'grey',
+    iconSize: 28,
+    onPress: function onPress(index, actionProps) {},
+    wrapperStyle: undefined,
+    showIf: true
+  }, _temp));
+
+  var _default2 = BottomToolbar;
+  exports.default = _default2;
+
+  var isDisabled = function isDisabled(child) {
+    var _child$props = child.props,
+        children = _child$props.children,
+        disabled = _child$props.disabled;
+
+    if (children) {
+      var isOnlyCancelActionPresent = React.Children.toArray(children).find(function (nested) {
+        return nested.props.style !== 'cancel';
+      }) === undefined;
+      return isOnlyCancelActionPresent || disabled;
+    } else {
+      return disabled;
+    }
+  };
+
+  var showActionSheet = function showActionSheet(child, rootOnPress) {
+    var nestedChildren = React.Children.toArray(child.props.children);
+    var options = nestedChildren.map(function (it) {
+      return it.props.title;
+    });
+    var styles = nestedChildren.map(function (it) {
+      return it.props.style;
+    });
+    var destructiveButtonIndex = styles.indexOf('destructive');
+    var cancelButtonIndex = styles.indexOf('cancel');
+    var title = child.props.actionSheetTitle;
+    var message = child.props.actionSheetMessage;
+
+    _reactNative.ActionSheetIOS.showActionSheetWithOptions({
+      options: options,
+      cancelButtonIndex: cancelButtonIndex,
+      destructiveButtonIndex: destructiveButtonIndex,
+      title: title,
+      message: message
+    }, function (buttonIndex) {
+      var fncToCall = nestedChildren[buttonIndex].props.onPress || child.props.onPress || rootOnPress;
+      fncToCall(buttonIndex, nestedChildren[buttonIndex].props);
+    });
+  };
+
+  BottomToolbar.propTypes = {
+    IconComponent: _propTypes.default.func,
+    iconSize: _propTypes.default.number,
+    onPress: _propTypes.default.func,
+    wrapperStyle: _reactNative.ViewPropTypes.style,
+    textStyle: _propTypes.default.any,
+    buttonStyle: _reactNative.ViewPropTypes.style,
+    color: _propTypes.default.string,
+    disabledColor: _propTypes.default.string,
+    showIf: _propTypes.default.bool,
+    children: _propTypes.default.any.isRequired
+  };
+  Action.propTypes = {
+    title: _propTypes.default.string.isRequired,
+    iconName: _propTypes.default.string,
+    testID: _propTypes.default.string,
+    disabled: _propTypes.default.bool,
+    onPress: _propTypes.default.func,
+    color: _propTypes.default.string,
+    iconSize: _propTypes.default.number,
+    IconElement: _propTypes.default.object,
+    IconComponent: _propTypes.default.func,
+    actionSheetTitle: _propTypes.default.string,
+    actionSheetMessage: _propTypes.default.string
+  };
+  NestedAction.propTypes = {
+    title: _propTypes.default.string.isRequired,
+    onPress: _propTypes.default.func,
+    style: _propTypes.default.oneOf(['cancel', 'destructive'])
+  };
+
+  var styles = _reactNative.StyleSheet.create({
+    wrapper: {
+      backgroundColor: 'rgba(245,245,245,1)',
+      flexDirection: 'row',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: 43,
+      borderTopWidth: _reactNative.StyleSheet.hairlineWidth,
+      borderTopColor: 'grey'
+    },
+    columnWrap: {
+      flexDirection: 'row',
+      flex: 1,
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    },
+    text: {
+      fontSize: 17,
+      color: '#007AFF'
+    },
+    buttonDefaults: {
+      paddingHorizontal: 15
+    }
+  });
+},628,[2,88,59,15],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -100763,7 +101236,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var _ProductList = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./ProductList"));
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},748,[749,751],"index.js");
+},629,[630,684],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -100833,6 +101306,8 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
       return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ProductItem)).call.apply(_getPrototypeOf2, [this].concat(args))), _this._onPress = function () {
         _this.props.onPressItem(_this.props.id);
+      }, _this._onPressItemImg = function () {
+        _this.props.onPressItemImg(_this.props.id);
       }, _temp));
     }
 
@@ -100840,15 +101315,24 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       key: "render",
       value: function render() {
         return _react.default.createElement(_reactNativeElements.ListItem, {
-          avatar: {
-            uri: this.props.photo
-          },
+          avatar: _react.default.createElement(_reactNativeElements.Avatar, {
+            rounded: true,
+            large: true,
+            source: {
+              uri: this.props.photo
+            },
+            onPress: this._onPressItemImg,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 17
+            }
+          }),
           title: this.props.description,
           subtitle: "" + this.props.price,
           onPress: this._onPress,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 12
+            lineNumber: 16
           }
         });
       }
@@ -100862,7 +101346,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   ProductItem = _wrapComponent("ProductItem")(ProductItem);
   var _default2 = ProductItem;
   exports.default = _default2;
-},749,[2,88,629,750],"ProductItem.js");
+},630,[2,88,631,683],"ProductItem.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -101069,7 +101553,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},629,[630,651,652,653,656,655,657,658,659,660,661,663,654,665,671,676,677,678,679,680,632,631,635,634],"index.js");
+},631,[632,653,654,655,658,657,659,660,661,662,663,665,656,667,673,678,679,680,681,682,634,633,637,636],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -101415,7 +101899,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = Button;
   exports.default = _default;
-},630,[59,2,15,631,632,599,635,634,650],"Button.js");
+},632,[59,2,15,633,634,599,637,636,652],"Button.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -101442,7 +101926,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     error: '#ff190c'
   };
   exports.default = _default;
-},631,[],"colors.js");
+},633,[],"colors.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -101521,7 +102005,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
   var _default = TextElement;
   exports.default = _default;
-},632,[59,2,15,633,634],"Text.js");
+},634,[59,2,15,635,636],"Text.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -101560,7 +102044,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     }
   };
   exports.default = _default;
-},633,[],"fonts.js");
+},635,[],"fonts.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var React = _$$_REQUIRE(_dependencyMap[0], 'react-native');
 
@@ -101615,7 +102099,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
 
   module.exports = normalize;
-},634,[15],"normalizeText.js");
+},636,[15],"normalizeText.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -101699,7 +102183,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
 
   exports.default = _default;
-},635,[636,638,599,640,549,601,642,644,597,646,648],"getIconType.js");
+},637,[638,640,599,642,549,601,644,646,597,648,650],"getIconType.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -101725,7 +102209,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.ToolbarAndroid = ToolbarAndroid;
   var getImageSource = iconSet.getImageSource;
   exports.getImageSource = getImageSource;
-},636,[550,637],"Zocial.js");
+},638,[550,639],"Zocial.js");
 __d(function(global, require, module, exports) {
   module.exports = {
   "acrobat": 61696,
@@ -101829,7 +102313,7 @@ __d(function(global, require, module, exports) {
   "yelp": 61794,
   "youtube": 61795
 };
-},637,[],"Zocial.json");
+},639,[],"Zocial.json");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -101855,7 +102339,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.ToolbarAndroid = ToolbarAndroid;
   var getImageSource = iconSet.getImageSource;
   exports.getImageSource = getImageSource;
-},638,[550,639],"Octicons.js");
+},640,[550,641],"Octicons.js");
 __d(function(global, require, module, exports) {
   module.exports = {
   "alert": 61696,
@@ -102036,7 +102520,7 @@ __d(function(global, require, module, exports) {
   "x": 61871,
   "zap": 61872
 };
-},639,[],"Octicons.json");
+},641,[],"Octicons.json");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -102062,7 +102546,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.ToolbarAndroid = ToolbarAndroid;
   var getImageSource = iconSet.getImageSource;
   exports.getImageSource = getImageSource;
-},640,[550,641],"MaterialCommunityIcons.js");
+},642,[550,643],"MaterialCommunityIcons.js");
 __d(function(global, require, module, exports) {
   module.exports = {
   "access-point": 61442,
@@ -104661,7 +105145,7 @@ __d(function(global, require, module, exports) {
   "zip-disk": 64034,
   "blank": 63116
 };
-},641,[],"MaterialCommunityIcons.json");
+},643,[],"MaterialCommunityIcons.json");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -104687,7 +105171,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.ToolbarAndroid = ToolbarAndroid;
   var getImageSource = iconSet.getImageSource;
   exports.getImageSource = getImageSource;
-},642,[550,643],"EvilIcons.js");
+},644,[550,645],"EvilIcons.js");
 __d(function(global, require, module, exports) {
   module.exports = {
   "archive": 61696,
@@ -104761,7 +105245,7 @@ __d(function(global, require, module, exports) {
   "unlock": 61764,
   "user": 61765
 };
-},643,[],"EvilIcons.json");
+},645,[],"EvilIcons.json");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -104787,7 +105271,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.ToolbarAndroid = ToolbarAndroid;
   var getImageSource = iconSet.getImageSource;
   exports.getImageSource = getImageSource;
-},644,[550,645],"Entypo.js");
+},646,[550,647],"Entypo.js");
 __d(function(global, require, module, exports) {
   module.exports = {
   "500px": 61696,
@@ -105202,7 +105686,7 @@ __d(function(global, require, module, exports) {
   "youtube": 62105,
   "youtube-with-circle": 62106
 };
-},645,[],"Entypo.json");
+},647,[],"Entypo.json");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -105228,7 +105712,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.ToolbarAndroid = ToolbarAndroid;
   var getImageSource = iconSet.getImageSource;
   exports.getImageSource = getImageSource;
-},646,[550,647],"SimpleLineIcons.js");
+},648,[550,649],"SimpleLineIcons.js");
 __d(function(global, require, module, exports) {
   module.exports = {
   "user": 57349,
@@ -105421,7 +105905,7 @@ __d(function(global, require, module, exports) {
   "social-vkontakte": 58904,
   "social-steam": 58912
 };
-},647,[],"SimpleLineIcons.json");
+},649,[],"SimpleLineIcons.json");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -105447,7 +105931,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.ToolbarAndroid = ToolbarAndroid;
   var getImageSource = iconSet.getImageSource;
   exports.getImageSource = getImageSource;
-},648,[550,649],"Feather.js");
+},650,[550,651],"Feather.js");
 __d(function(global, require, module, exports) {
   module.exports = {
   "activity": 59648,
@@ -105717,7 +106201,7 @@ __d(function(global, require, module, exports) {
   "zoom-in": 59912,
   "zoom-out": 59913
 };
-},649,[],"Feather.json");
+},651,[],"Feather.json");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -105729,7 +106213,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var ViewPropTypes = _reactNative.ViewPropTypes || _reactNative.View.propTypes;
   var _default = ViewPropTypes;
   exports.default = _default;
-},650,[15],"ViewPropTypes.js");
+},652,[15],"ViewPropTypes.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -105866,7 +106350,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = Icon;
   exports.default = _default;
-},651,[59,2,15,635,650],"Icon.js");
+},653,[59,2,15,637,652],"Icon.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -105921,7 +106405,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = List;
   exports.default = _default;
-},652,[59,2,15,631,650],"List.js");
+},654,[59,2,15,633,652],"List.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -106380,7 +106864,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = ListItem;
   exports.default = _default;
-},653,[59,2,15,654,655,651,632,631,633,634,650],"ListItem.js");
+},655,[59,2,15,656,657,653,634,633,635,636,652],"ListItem.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -106666,7 +107150,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Avatar.defaultProps = defaultProps;
   var _default = Avatar;
   exports.default = _default;
-},654,[59,2,15,650,651,632],"Avatar.js");
+},656,[59,2,15,652,653,634],"Avatar.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -106777,7 +107261,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = Badge;
   exports.default = _default;
-},655,[59,2,15,631,650],"badge.js");
+},657,[59,2,15,633,652],"badge.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -106985,7 +107469,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = SocialIcon;
   exports.default = _default;
-},656,[59,2,15,597,632,633,650],"SocialIcon.js");
+},658,[59,2,15,597,634,635,652],"SocialIcon.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -107170,7 +107654,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = CheckBox;
   exports.default = _default;
-},657,[59,2,15,632,633,631,597,635,650],"CheckBox.js");
+},659,[59,2,15,634,635,633,597,637,652],"CheckBox.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -107213,7 +107697,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   });
   var _default = Divider;
   exports.default = _default;
-},658,[2,15,631,650],"Divider.js");
+},660,[2,15,633,652],"Divider.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -107739,7 +108223,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       opacity: 0.5
     }
   });
-},659,[2,88,59,15,650],"Slider.js");
+},661,[2,88,59,15,652],"Slider.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -107913,7 +108397,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
   var _default = ButtonGroup;
   exports.default = _default;
-},660,[59,2,15,631,632,634,650],"ButtonGroup.js");
+},662,[59,2,15,633,634,636,652],"ButtonGroup.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -108155,7 +108639,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = Card;
   exports.default = _default;
-},661,[59,2,15,633,631,632,658,634,650,662],"Card.js");
+},663,[59,2,15,635,633,634,660,636,652,664],"Card.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -108167,7 +108651,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var BackgroundImage = _reactNative.ImageBackground || _reactNative.Image;
   var _default = BackgroundImage;
   exports.default = _default;
-},662,[15],"BackgroundImage.js");
+},664,[15],"BackgroundImage.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -108345,7 +108829,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
   var _default = Tile;
   exports.default = _default;
-},663,[59,2,15,632,651,664,650,662],"Tile.js");
+},665,[59,2,15,634,653,666,652,664],"Tile.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -108503,7 +108987,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
   var _default = FeaturedTile;
   exports.default = _default;
-},664,[59,2,15,632,651,650,662],"FeaturedTile.js");
+},666,[59,2,15,634,653,652,664],"FeaturedTile.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -108981,7 +109465,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     startingValue: _propTypes.default.number,
     fractions: fractionsType
   };
-},665,[2,88,666,59,15,632,650,667,668,669,670],"Rating.js");
+},667,[2,88,668,59,15,634,652,669,670,671,672],"Rating.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var INFINITY = 1 / 0,
       MAX_SAFE_INTEGER = 9007199254740991,
@@ -109092,7 +109576,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   module.exports = times;
-},666,[],"index.js");
+},668,[],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -109104,7 +109588,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "star",
     "type": "png"
   });
-},667,[83],"star.png");
+},669,[83],"star.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -109116,7 +109600,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "heart",
     "type": "png"
   });
-},668,[83],"heart.png");
+},670,[83],"heart.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -109128,7 +109612,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "rocket",
     "type": "png"
   });
-},669,[83],"rocket.png");
+},671,[83],"rocket.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -109140,7 +109624,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "bell",
     "type": "png"
   });
-},670,[83],"bell.png");
+},672,[83],"bell.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -109286,7 +109770,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = Header;
   exports.default = _default;
-},671,[2,59,15,672,673,674,675,650],"Header.js");
+},673,[2,59,15,674,675,676,677,652],"Header.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var MAX_SAFE_INTEGER = 9007199254740991;
   var argsTag = '[object Arguments]',
@@ -109496,7 +109980,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }
 
   module.exports = isEmpty;
-},672,[],"index.js");
+},674,[],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -109530,7 +110014,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = DummyNavButton;
   exports.default = _default;
-},673,[2,15],"DummyNavButton.js");
+},675,[2,15],"DummyNavButton.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -109569,7 +110053,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
   var _default = NavButton;
   exports.default = _default;
-},674,[2,59,651],"NavButton.js");
+},676,[2,59,653],"NavButton.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -109609,7 +110093,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
   var _default = Title;
   exports.default = _default;
-},675,[2,59,632],"Title.js");
+},677,[2,59,634],"Title.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -109802,7 +110286,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = PricingCard;
   exports.default = _default;
-},676,[59,2,15,632,633,631,630,634,650],"PricingCard.js");
+},678,[59,2,15,634,635,633,632,636,652],"PricingCard.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -110031,7 +110515,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = FormInput;
   exports.default = _default2;
-},677,[2,88,59,15,631,634,650],"FormInput.js");
+},679,[2,88,59,15,633,636,652],"FormInput.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -110116,7 +110600,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = FormLabel;
   exports.default = _default;
-},678,[59,2,15,631,633,632,634,650],"FormLabel.js");
+},680,[59,2,15,633,635,634,636,652],"FormLabel.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -110190,7 +110674,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = FormValidationMessage;
   exports.default = _default;
-},679,[59,2,15,631,632,634,650],"FormValidationMessage.js");
+},681,[59,2,15,633,634,636,652],"FormValidationMessage.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -110487,7 +110971,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = Search;
   exports.default = _default2;
-},680,[2,88,59,15,599,631,634,650,635],"Search.js");
+},682,[2,88,59,15,599,633,636,652,637],"Search.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -110506,7 +110990,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   });
 
   exports.default = _default;
-},750,[15],"styles.js");
+},683,[15],"styles.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -110515,7 +110999,15 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[0], "react"));
 
-  var _icons = _$$_REQUIRE(_dependencyMap[1], "../assets/icons");
+  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./../../../node_modules/react-transform-hmr/lib/index.js"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[2], "react-native");
+
+  var _ProductItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./ProductItem"));
+
+  var _jsxFileName = "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/components/Product/ProductList.js";
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -110535,37 +111027,106 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
 
-  var ProductBase = function (_Component) {
-    function ProductBase() {
-      _classCallCheck(this, ProductBase);
+  var _components = {
+    ProductList: {
+      displayName: "ProductList"
+    }
+  };
 
-      return _possibleConstructorReturn(this, _getPrototypeOf(ProductBase).apply(this, arguments));
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index.default)({
+    filename: "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/components/Product/ProductList.js",
+    components: _components,
+    locals: [module],
+    imports: [_react.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var ProductList = function (_PureComponent) {
+    function ProductList() {
+      var _getPrototypeOf2;
+
+      var _temp, _this;
+
+      _classCallCheck(this, ProductList);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ProductList)).call.apply(_getPrototypeOf2, [this].concat(args))), _this.state = {
+        selected: new Map()
+      }, _this._keyExtractor = function (item, index) {
+        return item.productId;
+      }, _this._renderItem = function (_ref) {
+        var item = _ref.item;
+        return _react.default.createElement(_ProductItem.default, {
+          id: item.productId,
+          description: item.description,
+          price: item.price,
+          photo: item.images[0].path,
+          onPressItem: function onPressItem(id) {
+            return _this._onPressItem(id);
+          },
+          onPressItemImg: function onPressItemImg(id) {
+            return _this._onPressItemImg(id);
+          },
+          selected: !!_this.state.selected.get(item.productId),
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 27
+          }
+        });
+      }, _temp));
     }
 
-    _createClass(ProductBase, null, [{
-      key: "options",
-      get: function get() {
-        return {
-          topBar: {
-            visible: true,
-            leftButtons: [{
-              id: 'sideMenuBtn',
-              icon: _icons.iconsMap['bars'],
-              color: 'blue'
-            }]
+    _createClass(ProductList, [{
+      key: "_onPressItem",
+      value: function _onPressItem(id) {
+        console.log('the index is ' + id);
+        this.setState(function (state) {
+          var selected = new Map(state.selected);
+          selected.set(id, !selected.get(id));
+          return {
+            selected: selected
+          };
+        });
+        this.props.onPressItem(id);
+      }
+    }, {
+      key: "_onPressItemImg",
+      value: function _onPressItemImg(id) {
+        this.props.onPressItemImg(id);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return _react.default.createElement(_reactNative.FlatList, {
+          data: this.props.data,
+          extraData: this.state,
+          keyExtractor: this._keyExtractor,
+          renderItem: this._renderItem,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40
           }
-        };
+        });
       }
     }]);
 
-    _inherits(ProductBase, _Component);
+    _inherits(ProductList, _PureComponent);
 
-    return ProductBase;
-  }(_react.Component);
+    return ProductList;
+  }(_react.PureComponent);
 
-  var _default = ProductBase;
-  exports.default = _default;
-},682,[2,548],"ProductBase.js");
+  ProductList = _wrapComponent("ProductList")(ProductList);
+  var _default2 = ProductList;
+  exports.default = _default2;
+},684,[2,88,15,630],"ProductList.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -110669,7 +111230,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = ProductPub;
   exports.default = _default;
-},683,[2,15,12,682],"ProductPub.js");
+},685,[2,15,12,603],"ProductPub.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -110773,7 +111334,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = ProductFavo;
   exports.default = _default;
-},684,[2,15,12,682],"ProductFavo.js");
+},686,[2,15,12,603],"ProductFavo.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -110913,7 +111474,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var _default2 = (0, _reactRedux.connect)(mapStateToProps)(ProductView);
 
   exports.default = _default2;
-},685,[2,88,15,525,686],"ProductView.js");
+},687,[2,88,15,525,688],"ProductView.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -111016,7 +111577,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var data = new DataProvider();
   exports.data = data;
-},686,[687,688,712,728,729,730,509],"index.js");
+},688,[689,690,714,730,731,732,509],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -111147,7 +111708,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = populate;
   exports.default = _default;
-},687,[688,712,728,729,509],"dataGenerator.js");
+},689,[690,714,730,731,509],"dataGenerator.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -111322,7 +111883,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }];
   var _default = users;
   exports.default = _default;
-},688,[689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711],"users.js");
+},690,[691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713],"users.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111334,7 +111895,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image10",
     "type": "png"
   });
-},689,[83],"Image10.png");
+},691,[83],"Image10.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111346,7 +111907,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image11",
     "type": "png"
   });
-},690,[83],"Image11.png");
+},692,[83],"Image11.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111358,7 +111919,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image2",
     "type": "png"
   });
-},691,[83],"Image2.png");
+},693,[83],"Image2.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111370,7 +111931,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image3",
     "type": "png"
   });
-},692,[83],"Image3.png");
+},694,[83],"Image3.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111382,7 +111943,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image4",
     "type": "png"
   });
-},693,[83],"Image4.png");
+},695,[83],"Image4.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111394,7 +111955,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image1",
     "type": "png"
   });
-},694,[83],"Image1.png");
+},696,[83],"Image1.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111406,7 +111967,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image12",
     "type": "png"
   });
-},695,[83],"Image12.png");
+},697,[83],"Image12.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111418,7 +111979,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image8",
     "type": "png"
   });
-},696,[83],"Image8.png");
+},698,[83],"Image8.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111430,7 +111991,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image6",
     "type": "png"
   });
-},697,[83],"Image6.png");
+},699,[83],"Image6.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111442,7 +112003,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image9",
     "type": "png"
   });
-},698,[83],"Image9.png");
+},700,[83],"Image9.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111454,7 +112015,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image5",
     "type": "png"
   });
-},699,[83],"Image5.png");
+},701,[83],"Image5.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111466,7 +112027,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image7",
     "type": "png"
   });
-},700,[83],"Image7.png");
+},702,[83],"Image7.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111478,7 +112039,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image9",
     "type": "png"
   });
-},701,[83],"Image9.png");
+},703,[83],"Image9.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111490,7 +112051,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image1",
     "type": "png"
   });
-},702,[83],"Image1.png");
+},704,[83],"Image1.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111502,7 +112063,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image3",
     "type": "png"
   });
-},703,[83],"Image3.png");
+},705,[83],"Image3.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111514,7 +112075,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image4",
     "type": "png"
   });
-},704,[83],"Image4.png");
+},706,[83],"Image4.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111526,7 +112087,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image5",
     "type": "png"
   });
-},705,[83],"Image5.png");
+},707,[83],"Image5.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111538,7 +112099,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image6",
     "type": "png"
   });
-},706,[83],"Image6.png");
+},708,[83],"Image6.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111550,7 +112111,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image7",
     "type": "png"
   });
-},707,[83],"Image7.png");
+},709,[83],"Image7.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111562,7 +112123,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image8",
     "type": "png"
   });
-},708,[83],"Image8.png");
+},710,[83],"Image8.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111574,7 +112135,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image10",
     "type": "png"
   });
-},709,[83],"Image10.png");
+},711,[83],"Image10.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111586,7 +112147,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image11",
     "type": "png"
   });
-},710,[83],"Image11.png");
+},712,[83],"Image11.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111598,7 +112159,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "Image12",
     "type": "png"
   });
-},711,[83],"Image12.png");
+},713,[83],"Image12.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -111759,7 +112320,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }];
   var _default = articles;
   exports.default = _default;
-},712,[713,714,715,716,717,718,719,720,721,722,723,724,725,726,727],"articles.js");
+},714,[715,716,717,718,719,720,721,722,723,724,725,726,727,728,729],"articles.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111771,7 +112332,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo1",
     "type": "png"
   });
-},713,[83],"photo1.png");
+},715,[83],"photo1.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111783,7 +112344,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo2",
     "type": "png"
   });
-},714,[83],"photo2.png");
+},716,[83],"photo2.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111795,7 +112356,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo3",
     "type": "png"
   });
-},715,[83],"photo3.png");
+},717,[83],"photo3.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111807,7 +112368,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo4",
     "type": "png"
   });
-},716,[83],"photo4.png");
+},718,[83],"photo4.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111819,7 +112380,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo5",
     "type": "png"
   });
-},717,[83],"photo5.png");
+},719,[83],"photo5.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111831,7 +112392,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo6",
     "type": "png"
   });
-},718,[83],"photo6.png");
+},720,[83],"photo6.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111843,7 +112404,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo45",
     "type": "png"
   });
-},719,[83],"photo45.png");
+},721,[83],"photo45.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111855,7 +112416,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo46",
     "type": "png"
   });
-},720,[83],"photo46.png");
+},722,[83],"photo46.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111867,7 +112428,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo47",
     "type": "png"
   });
-},721,[83],"photo47.png");
+},723,[83],"photo47.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111879,7 +112440,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo48",
     "type": "png"
   });
-},722,[83],"photo48.png");
+},724,[83],"photo48.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111891,7 +112452,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo49",
     "type": "png"
   });
-},723,[83],"photo49.png");
+},725,[83],"photo49.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111903,7 +112464,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo17",
     "type": "png"
   });
-},724,[83],"photo17.png");
+},726,[83],"photo17.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111915,7 +112476,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo18",
     "type": "png"
   });
-},725,[83],"photo18.png");
+},727,[83],"photo18.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111927,7 +112488,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo19",
     "type": "png"
   });
-},726,[83],"photo19.png");
+},728,[83],"photo19.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -111939,7 +112500,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "photo20",
     "type": "png"
   });
-},727,[83],"photo20.png");
+},729,[83],"photo20.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112002,7 +112563,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }];
   var _default = notifications;
   exports.default = _default;
-},728,[696],"notifications.js");
+},730,[698],"notifications.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112078,7 +112639,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   exports.Conversations = Conversations;
   var _default = Conversations;
   exports.default = _default;
-},729,[],"conversations.js");
+},731,[],"conversations.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112123,7 +112684,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   }];
   var _default = cards;
   exports.default = _default;
-},730,[],"cards.js");
+},732,[],"cards.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112357,7 +112918,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var _default2 = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ProductAdd);
 
   exports.default = _default2;
-},731,[2,88,15,12,525,548,732,618,737,738],"ProductAdd.js");
+},733,[2,88,15,12,525,548,734,619,739,740],"ProductAdd.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112370,7 +112931,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = _ImageGridView.default;
   exports.default = _default;
-},732,[733],"index.js");
+},734,[735],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112554,7 +113115,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = ImageGridView;
   exports.default = _default2;
-},733,[2,88,15,734,735,736],"ImageGridView.js");
+},735,[2,88,15,736,737,738],"ImageGridView.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112569,7 +113130,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default = _reactNative.NativeModules.ImageCropPicker;
   exports.default = _default;
-},734,[2,15],"index.js");
+},736,[2,15],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112588,7 +113149,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   });
 
   exports.default = _default;
-},735,[15],"styles.js");
+},737,[15],"styles.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -112600,7 +113161,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     "name": "add",
     "type": "png"
   });
-},736,[83],"add.png");
+},738,[83],"add.png");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112617,7 +113178,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
 
   exports.addProduct = addProduct;
-},737,[],"products.js");
+},739,[],"products.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112633,7 +113194,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   var _default = (0, _redux.createStore)(_reducers.default);
 
   exports.default = _default;
-},738,[535,739],"store.js");
+},740,[535,741],"store.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112654,7 +113215,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   });
 
   exports.default = _default;
-},739,[535,740,741],"index.js");
+},741,[535,742,743],"index.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112713,7 +113274,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   });
 
   exports.default = _default;
-},740,[535,737],"products.js");
+},742,[535,739],"products.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112764,7 +113325,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
 
   exports.default = _default;
-},741,[535,621],"calculator.js");
+},743,[535,622],"calculator.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112900,7 +113461,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = OrderNew;
   exports.default = _default2;
-},742,[2,88,15,12],"OrderNew.js");
+},744,[2,88,15,12],"OrderNew.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -113036,7 +113597,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = OrderUnpaid;
   exports.default = _default2;
-},743,[2,88,15,12],"OrderUnpaid.js");
+},745,[2,88,15,12],"OrderUnpaid.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -113172,135 +113733,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _default2 = OrderPaid;
   exports.default = _default2;
-},744,[2,88,15,12],"OrderPaid.js");
-__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.default = void 0;
-
-  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[0], "react"));
-
-  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./../../../node_modules/react-transform-hmr/lib/index.js"));
-
-  var _reactNative = _$$_REQUIRE(_dependencyMap[2], "react-native");
-
-  var _ProductItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./ProductItem"));
-
-  var _jsxFileName = "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/components/Product/ProductList.js";
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-  function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } _setPrototypeOf(subClass.prototype, superClass && superClass.prototype); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-  function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-  function _getPrototypeOf(o) { _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) { return o.__proto__; }; return _getPrototypeOf(o); }
-
-  var _components = {
-    ProductList: {
-      displayName: "ProductList"
-    }
-  };
-
-  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index.default)({
-    filename: "/Users/BZhuang/Documents/project/react-native/SomiaGo/app/components/Product/ProductList.js",
-    components: _components,
-    locals: [module],
-    imports: [_react.default]
-  });
-
-  function _wrapComponent(id) {
-    return function (Component) {
-      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
-    };
-  }
-
-  var ProductList = function (_PureComponent) {
-    function ProductList() {
-      var _getPrototypeOf2;
-
-      var _temp, _this;
-
-      _classCallCheck(this, ProductList);
-
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ProductList)).call.apply(_getPrototypeOf2, [this].concat(args))), _this.state = {
-        selected: new Map()
-      }, _this._keyExtractor = function (item, index) {
-        return item.productId;
-      }, _this._renderItem = function (_ref) {
-        var item = _ref.item;
-        return _react.default.createElement(_ProductItem.default, {
-          id: item.productId,
-          description: item.description,
-          price: item.price,
-          photo: item.images[0].path,
-          onPressItem: function onPressItem(id) {
-            return _this._onPressItem(id);
-          },
-          selected: !!_this.state.selected.get(item.productId),
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 23
-          }
-        });
-      }, _temp));
-    }
-
-    _createClass(ProductList, [{
-      key: "_onPressItem",
-      value: function _onPressItem(id) {
-        console.log('the index is ' + id);
-        this.setState(function (state) {
-          var selected = new Map(state.selected);
-          selected.set(id, !selected.get(id));
-          return {
-            selected: selected
-          };
-        });
-        this.props.onPressItem(id);
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        return _react.default.createElement(_reactNative.FlatList, {
-          data: this.props.data,
-          extraData: this.state,
-          keyExtractor: this._keyExtractor,
-          renderItem: this._renderItem,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 35
-          }
-        });
-      }
-    }]);
-
-    _inherits(ProductList, _PureComponent);
-
-    return ProductList;
-  }(_react.PureComponent);
-
-  ProductList = _wrapComponent("ProductList")(ProductList);
-  var _default2 = ProductList;
-  exports.default = _default2;
-},751,[2,88,15,749],"ProductList.js");
+},746,[2,88,15,12],"OrderPaid.js");
 require(264);
 require(0);
 //# sourceMappingURL=index.map

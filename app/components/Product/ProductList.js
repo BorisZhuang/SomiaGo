@@ -19,6 +19,10 @@ class ProductList extends PureComponent {
     this.props.onPressItem(id);
   };
 
+  _onPressItemImg(id) {
+    this.props.onPressItemImg(id);
+  }
+
   _renderItem = ({item}) => (
       <ProductItem
         id={item.productId}
@@ -26,6 +30,7 @@ class ProductList extends PureComponent {
         price={item.price}
         photo={item.images[0].path}
         onPressItem={(id) => this._onPressItem(id)}
+        onPressItemImg={(id) => this._onPressItemImg(id)}
         selected={!!this.state.selected.get(item.productId)}
       />
   )

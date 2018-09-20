@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import {FlatList, View, StyleSheet} from 'react-native';
+import {FlatList, View, Text, StyleSheet} from 'react-native';
 import ActionButton from 'react-native-action-button';
 import {Navigation} from 'react-native-navigation';
 import { connect } from "react-redux";
+import BottomToolbar from 'react-native-bottom-toolbar';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {ProductList} from '../components/Product';
 import ProductBase from './ProductBase';
 
 class ProductNew extends ProductBase {
   constructor(props) {
     super(props);
+    this.state = {
+      toolbar: false,
+    };
     Navigation.events().bindComponent(this);
   }
 
@@ -37,6 +44,10 @@ class ProductNew extends ProductBase {
     })
   };
 
+  _onPressItemImg(id) {
+    this.setState({toolbar: !this.state.toolbar});
+  }
+
   _launchProductAddScreen() {
     Navigation.push(this.props.componentId, {
       component: {
@@ -50,12 +61,38 @@ class ProductNew extends ProductBase {
       <View style={styles.container}>
         <ProductList
           data={this.props.data}
-          onPressItem={(id) => this._onPressItem(id)}/>
+          onPressItem={(id) => this._onPressItem(id)}
+          onPressItemImg={(id) => this._onPressItemImg(id)} />
         <ActionButton
           offsetX={20}
           offsetY={65}
           buttonColor="rgba(231,76,60,1)"
           onPress={() => this._launchProductAddScreen()} />
+        <BottomToolbar
+          showIf={this.state.toolbar}
+          IconComponent={Ionicons}
+          color='blue'>
+          <BottomToolbar.Action
+            title="Share"
+            iconName="md-share"
+            onPress={(index, propsOfThisAction) =>
+              console.warn(index + ' ' + JSON.stringify(propsOfThisAction))} />
+          <BottomToolbar.Action
+            title="Edit"
+            IconElement={<FontAwesome name="edit" color='blue' size={30} />}
+            onPress={(index, propsOfThisAction) =>
+              console.warn(index + ' ' + JSON.stringify(propsOfThisAction))} />
+          <BottomToolbar.Action
+            title="Move"
+            iconName="ios-move"
+            onPress={(index, propsOfThisAction) =>
+              console.warn(index + ' ' + JSON.stringify(propsOfThisAction))} />
+          <BottomToolbar.Action
+            title="Delete"
+            IconElement={<MaterialIcons name="delete" color='blue' size={30} />}
+            onPress={(index, propsOfThisAction) =>
+              console.warn(index + ' ' + JSON.stringify(propsOfThisAction))} />
+          </BottomToolbar>
       </View>
     );
   }
@@ -68,8 +105,8 @@ const styles = StyleSheet.create({
     //alignItems: 'center',
     //paddingTop: ( Platform.OS === 'ios' ) ? 20 : 0,
     backgroundColor: "white",
-    paddingVertical: 8,
-    paddingHorizontal: 8
+    //paddingVertical: 8,
+    //paddingHorizontal: 8
   },
 })
 

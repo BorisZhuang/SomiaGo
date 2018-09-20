@@ -2,7 +2,7 @@ import registerScreens from './app/screens/index';
 import {Navigation} from 'react-native-navigation';
 import {data} from './app/data';
 import {iconsMap, iconsLoaded} from './app/assets/icons';
-import {setRootToProduct} from './app/screens/SideMenu';
+import {setRootToProduct} from './app/screens/ProductBase';
 
 data.populateData();
 registerScreens();
