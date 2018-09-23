@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
 import {Navigation} from 'react-native-navigation';
-import {iconsMap} from '../assets/icons';
 import { setRootToProduct } from "./ProductBase";
 
 class SideMenu extends Component {
@@ -24,9 +23,6 @@ class SideMenu extends Component {
           <TouchableHighlight onPress = {setRootToProduct}>
             <Text style={styles.welcome}>Product</Text>
           </TouchableHighlight>
-          <TouchableHighlight onPress = {setRootToOrder}>
-            <Text style={styles.welcome}>Order</Text>
-          </TouchableHighlight>
         </View>
     );
   }
@@ -42,111 +38,5 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 })
-
-export const setRootToOrder = () => {
-  Navigation.setRoot({
-    root: {
-      sideMenu: {
-        left: {
-          component: {
-            //id: 'somiaGo.SideMenu.left',
-            name: 'navigation.somiaGo.SideMenu',
-            passProps: {
-              text: 'left side menu screen'
-            }
-          }
-        },
-        center: {
-          bottomTabs: {
-            children: [
-              {
-                stack: {
-                  children: [
-                    {
-                      component: {
-                        name: 'navigation.somiaGo.OrderNew',
-                        passProps: {
-                          text: 'New Order'
-                        },
-                      }
-                    }
-                  ],
-                  options: {
-                    bottomTab: {
-                      fontFamily: 'HelveticaNeue-Italic',
-                      fontSize: 13,
-                      textColor: 'blue',
-                      iconColor: 'blue',
-                      selectedTextColor: 'red',
-                      selectedIconColor: 'red',
-                      text: 'Tab 1',
-                      icon: iconsMap['share-square-o'],
-                    }
-                  }
-                }
-              },
-              {
-                stack: {
-                  children: [
-                    {
-                      component: {
-                        name: 'navigation.somiaGo.OrderUnpaid',
-                        passProps: {
-                          text: 'Unpaid Order'
-                        }
-                      }
-                    }
-                  ],
-                  options: {
-                    bottomTab: {
-                      fontFamily: 'HelveticaNeue-Italic',
-                      fontSize: 13,
-                      text: 'Tab 2',
-                      icon: iconsMap['share-square-o'],
-                    }
-                  }
-                }
-              },
-              {
-                stack: {
-                  children: [
-                    {
-                      component: {
-                        name: 'navigation.somiaGo.OrderPaid',
-                        passProps: {
-                          text: 'Paid Order'
-                        }
-                      }
-                    }
-                  ],
-                  options: {
-                    bottomTab: {
-                      fontFamily: 'HelveticaNeue-Italic',
-                      fontSize: 13,
-                      text: 'Tab 2',
-                      icon: iconsMap['share-square-o'],
-                    }
-                  }
-                }
-              },
-            ],
-            options: {
-              topBar: {
-                visible: false
-              },
-              bottomTabs: {
-                visible: true,
-                animate: true, // Controls whether BottomTabs visibility changes should be animated
-                currentTabIndex: 0,
-                drawBehind: false,
-                backgroundColor: 'white'
-              }
-            }
-          }
-        },
-      }
-    }
-  });
-}
 
 export default SideMenu;

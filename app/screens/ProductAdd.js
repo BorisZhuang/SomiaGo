@@ -3,43 +3,13 @@ import {View, Button, Text, TextInput, StyleSheet, ScrollView, Image, KeyboardAv
 import {Navigation} from 'react-native-navigation';
 import { connect } from "react-redux";
 import { Provider } from "react-redux";
-
-import { iconsMap } from '../assets/icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import ImageGridView from "../components/ImageGridView";
 import InputWithButton from '../components/TextInput';
 import {addProduct} from '../actions/products';
 import store from "../config/store";
 
 class ProductAdd extends Component {
-  static get options() {
-    return {
-      topBar: {
-        visible: true,
-        backButton: { // android
-          color: "rgba(0, 0, 0, 0.87)"
-        },
-        buttonColor: "rgba(0, 0, 0, 0.87)", // iOS
-        title: {
-          text: 'New Product',
-          fontSize: 18,
-          fontFamily: 'Helvetica',
-        },
-        rightButtons: [
-          {
-            id: 'productAddConfirmBtn',
-            //text: 'Add Product',
-            color: 'green',
-            icon: iconsMap['md-checkmark'],
-          }
-        ]
-      },
-      bottomTabs: {
-        visible: false,
-        animate: false, // Controls whether BottomTabs visibility changes should be animated
-      }
-    };
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -47,6 +17,39 @@ class ProductAdd extends Component {
       description: ''
     };
     Navigation.events().bindComponent(this);
+  }
+
+  componentDidMount() {
+    Promise.all([
+      Ionicons.getImageSource('md-checkmark', 25)
+    ]).then((sources) => {
+      Navigation.mergeOptions(this.props.componentId, {
+        topBar: {
+          visible: true,
+          backButton: { // android
+            color: "rgba(0, 0, 0, 0.87)"
+          },
+          buttonColor: "rgba(0, 0, 0, 0.87)", // iOS
+          title: {
+            text: 'New Product',
+            fontSize: 18,
+            fontFamily: 'Helvetica',
+          },
+          rightButtons: [
+            {
+              id: 'productAddConfirmBtn',
+              //text: 'Add Product',
+              color: 'green',
+              icon: sources[0],
+            }
+          ]
+        },
+        bottomTabs: {
+          visible: false,
+          animate: false, // Controls whether BottomTabs visibility changes should be animated
+        }
+      })
+    })
   }
 
   onCalculatorPressed = () => {

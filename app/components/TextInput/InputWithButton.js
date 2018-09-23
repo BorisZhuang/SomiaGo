@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, Image, TouchableHighlight, TextInput } from "react-native";
 //import color from "color";
 import styles from "./styles";
-import { iconsMap } from '../../assets/icons';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const InputWithButton = props => {
