@@ -15,24 +15,9 @@ class ProductNew extends ProductBase {
   constructor(props) {
     super(props);
     this.state = {
-      isToolbarVisible: false,
-      isModalVisible: false,
+      selected: (new Map(): Map<string, boolean>),
+      selectedNum: 0,
     };
-    Navigation.events().bindComponent(this);
-  }
-
-  navigationButtonPressed({ buttonId }) {
-    this._showSideMenu('left');
-  }
-
-  _showSideMenu(side) {
-    Navigation.mergeOptions(this.props.componentId, {
-      sideMenu: {
-        [side]: {
-          visible: true
-        }
-      }
-    });
   }
 
   _onPressItem(id) {
@@ -47,7 +32,20 @@ class ProductNew extends ProductBase {
   };
 
   _onPressItemImg(id) {
-    this.setState({isToolbarVisible: !this.state.isToolbarVisible});
+    // copy the map rather than modifying state.
+    const selected = new Map(this.state.selected);
+    const isSelected = !this.state.selected.get(id);
+    selected.set(id, isSelected);
+    this.setState({
+      selected,
+      selectedNum: isSelected ? this.state.selectedNum + 1 : this.state.selectedNum - 1,
+    }, () => {
+      Navigation.mergeOptions(this.props.componentId, {
+        bottomTabs: {
+          visible: this.state.selectedNum <= 0,
+        }
+      });
+    });
   }
 
   _launchProductAddScreen() {
@@ -58,9 +56,6 @@ class ProductNew extends ProductBase {
     })
   }
 
-  _showModal = (visible) =>
-    this.setState({ isModalVisible: visible });
-
   render() {
     return (
       <View style={styles.container}>
@@ -70,11 +65,11 @@ class ProductNew extends ProductBase {
           onPressItemImg={(id) => this._onPressItemImg(id)} />
         <ActionButton
           offsetX={20}
-          offsetY={this.state.isToolbarVisible ? 65 : 25}
+          offsetY={65}
           buttonColor="rgba(231,76,60,1)"
           onPress={() => this._launchProductAddScreen()} />
         <BottomToolbar
-          showIf={this.state.isToolbarVisible}
+          wrapperStyle={styles.toolBarContainer}
           IconComponent={Ionicons}
           color='blue'>
           <BottomToolbar.Action
@@ -97,14 +92,6 @@ class ProductNew extends ProductBase {
             onPress={(index, propsOfThisAction) =>
               console.warn(index + ' ' + JSON.stringify(propsOfThisAction))} />
           </BottomToolbar>
-          <Modal isVisible={this.state.isModalVisible}>
-            <View style={styles.modalContent}>
-              <Text>Hello!</Text>
-              <TouchableOpacity onPress={() => this._showModal(false)}>
-                <Text>Hide me!</Text>
-              </TouchableOpacity>
-            </View>
-        </Modal>
       </View>
     );
   }
@@ -120,13 +107,13 @@ const styles = StyleSheet.create({
     //paddingVertical: 8,
     //paddingHorizontal: 8
   },
-  modalContent: {
-    backgroundColor: "white",
-    padding: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 4,
-    borderColor: "rgba(0, 0, 0, 0.1)"
+  toolBarContainer: {
+    flexBasis: 'auto',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: 56/* Navigation.constants().bottomTabsHeight */,
+    backgroundColor: 'white',
   },
 })
 

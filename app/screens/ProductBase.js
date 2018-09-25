@@ -5,9 +5,42 @@ import Foundation from "react-native-vector-icons/Foundation";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 class ProductBase extends Component {
+  constructor(props) {
+    super(props);
+    Navigation.events().bindComponent(this);
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    switch(buttonId) {
+      case 'sideMenuBtn':
+        this._showSideMenu('left');
+        break;
+      case 'shareBtn':
+        console.warn('share btn is pressed');
+        break;
+      case 'searchBtn':
+        console.warn('search btn is pressed');
+        break;
+      case 'moreBtn':
+        console.warn('more btn is pressed');
+        break;
+    }
+  }
+
+  _showSideMenu(side) {
+    Navigation.mergeOptions(this.props.componentId, {
+      sideMenu: {
+        [side]: {
+          visible: true
+        }
+      }
+    });
+  }
+
   componentDidMount() {
     Promise.all([
-      FontAwesome.getImageSource('bars', 25)
+      FontAwesome.getImageSource('bars', 25),
+      FontAwesome.getImageSource('search', 25),
     ]).then((sources) => {
       Navigation.mergeOptions(this.props.componentId, {
         topBar: {
@@ -18,6 +51,14 @@ class ProductBase extends Component {
               icon: sources[0],
               color: 'blue',
             }
+          ],
+          rightButtons: [
+            {
+              id: 'searchBtn',
+              icon: sources[1],
+              color: 'blue',
+              showAsAction: 'always',
+            },
           ],
         }
       })
@@ -130,7 +171,7 @@ export const setRootToProduct = () => {
                   visible: true,
                   animate: true, // Controls whether BottomTabs visibility changes should be animated
                   currentTabIndex: 0,
-                  drawBehind: false, // true for android?
+                  drawBehind: true, // true for android?
                   backgroundColor: 'white',
                   barStyle: 'default' | 'black',
                   translucent: true,
