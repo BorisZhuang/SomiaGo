@@ -2,6 +2,7 @@ package com.somiago;
 
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.mob.MobSDK;
 import com.reactnativenavigation.BuildConfig;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
@@ -31,7 +32,14 @@ public class MainApplication extends NavigationApplication {
     public List<ReactPackage> createAdditionalReactPackages() {
         return Arrays.<ReactPackage>asList(
                 new PickerPackage(),
-                new VectorIconsPackage()
+                new VectorIconsPackage(),
+                new SharePackage()
         );
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        MobSDK.init(this, "2223caeda9cb0", "229efcb55b335b536caa8b5c4a1af320");
     }
 }

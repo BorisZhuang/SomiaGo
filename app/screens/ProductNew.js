@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {FlatList, View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {FlatList, View, Text, TouchableOpacity, StyleSheet, NativeModules} from 'react-native';
 import ActionButton from 'react-native-action-button';
 import {Navigation} from 'react-native-navigation';
 import { connect } from "react-redux";
@@ -56,6 +56,10 @@ class ProductNew extends ProductBase {
     })
   }
 
+  _showShare() {
+    NativeModules.MobShare.showShare();
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -75,7 +79,7 @@ class ProductNew extends ProductBase {
           <BottomToolbar.Action
             title="Share"
             iconName="md-share"
-            onPress={() => this._showModal(true)} />
+            onPress={() => this._showShare()} />
           <BottomToolbar.Action
             title="Edit"
             IconElement={<FontAwesome name="edit" color='blue' size={30} />}
