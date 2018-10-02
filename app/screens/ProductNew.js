@@ -17,6 +17,7 @@ class ProductNew extends ProductBase {
     this.state = {
       selected: (new Map(): Map<string, boolean>),
       selectedNum: 0,
+      currentSelected: '',
     };
   }
 
@@ -39,6 +40,7 @@ class ProductNew extends ProductBase {
     this.setState({
       selected,
       selectedNum: isSelected ? this.state.selectedNum + 1 : this.state.selectedNum - 1,
+      currentSelected: isSelected ? id : '',
     }, () => {
       Navigation.mergeOptions(this.props.componentId, {
         bottomTabs: {
@@ -57,7 +59,16 @@ class ProductNew extends ProductBase {
   }
 
   _showShare() {
-    NativeModules.MobShare.showShare();
+    let selectedImages = [];
+    this.props.data.forEach((item) => {
+      if (item.productId === this.state.currentSelected) {
+        item.images.forEach((image) => {
+          let path = image.path.replace(/^file:\/\//g, "");
+          selectedImages.push(path);
+        });
+      }
+    });
+    NativeModules.MobShare.showShare(selectedImages);
   }
 
   render() {

@@ -107,6 +107,8 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
         vectorDrawables.useSupportLibrary = true
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

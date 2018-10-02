@@ -11,7 +11,8 @@ export default class ImageGridView extends Component {
 
   openImgPicker = () => {
     ImagePicker.openPicker({
-      multiple: true
+			multiple: true,
+			mediaType: "photo",
     }).then(images => {
       this.setState({images});
       this.props.onPickDone(images);
